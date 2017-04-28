@@ -1,18 +1,12 @@
 package com.fsck.k9.activity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils.TruncateAt;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -53,15 +47,21 @@ import com.fsck.k9.activity.setup.Prefs;
 import com.fsck.k9.controller.MessagingController;
 import com.fsck.k9.controller.MessagingListener;
 import com.fsck.k9.helper.SizeFormatter;
-import com.fsck.k9.mail.power.TracingPowerManager;
-import com.fsck.k9.mail.power.TracingPowerManager.TracingWakeLock;
 import com.fsck.k9.mail.Folder;
 import com.fsck.k9.mail.Message;
+import com.fsck.k9.mail.power.TracingPowerManager;
+import com.fsck.k9.mail.power.TracingPowerManager.TracingWakeLock;
 import com.fsck.k9.mailstore.LocalFolder;
 import com.fsck.k9.search.LocalSearch;
 import com.fsck.k9.search.SearchSpecification.Attribute;
 import com.fsck.k9.search.SearchSpecification.SearchField;
 import com.fsck.k9.service.MailService;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
 
 import de.cketti.library.changelog.ChangeLog;
 
@@ -259,10 +259,10 @@ public class FolderList extends K9ListActivity {
         }
 
         mActionBarProgressView = getActionBarProgressView();
-        mActionBar = getActionBar();
+        mActionBar = getSupportActionBar();
         initializeActionBar();
         setContentView(R.layout.folder_list);
-        mListView = getListView();
+        mListView = (ListView) findViewById(R.id.list);
         mListView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mListView.setLongClickable(true);
         mListView.setFastScrollEnabled(true);
@@ -344,13 +344,13 @@ public class FolderList extends K9ListActivity {
         mAdapter = new FolderListAdapter();
         restorePreviousData();
 
-        setListAdapter(mAdapter);
-        getListView().setTextFilterEnabled(mAdapter.getFilter() != null); // should never be false but better safe then sorry
+        ((ListView) findViewById(R.id.list)).setAdapter(mAdapter);
+        ((ListView) findViewById(R.id.list)).setTextFilterEnabled(mAdapter.getFilter() != null); // should never be false but better safe then sorry
     }
 
     @SuppressWarnings("unchecked")
     private void restorePreviousData() {
-        final Object previousData = getLastNonConfigurationInstance();
+        final Object previousData = getLastCustomNonConfigurationInstance();
 
         if (previousData != null) {
             mAdapter.mFolders = (ArrayList<FolderInfoHolder>) previousData;
@@ -359,7 +359,7 @@ public class FolderList extends K9ListActivity {
     }
 
 
-    @Override public Object onRetainNonConfigurationInstance() {
+    @Override public Object onRetainCustomNonConfigurationInstance() {
         return (mAdapter == null) ? null : mAdapter.mFolders;
     }
 

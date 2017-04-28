@@ -1,18 +1,20 @@
 package com.fsck.k9.activity;
 
-import android.app.ListActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.fsck.k9.K9;
+import com.fsck.k9.R;
 import com.fsck.k9.activity.K9ActivityCommon.K9ActivityMagic;
 import com.fsck.k9.activity.misc.SwipeGestureDetector.OnSwipeGestureListener;
 
 
-public class K9ListActivity extends ListActivity implements K9ActivityMagic {
+public class K9ListActivity extends AppCompatActivity implements K9ActivityMagic {
 
     private K9ActivityCommon mBase;
 
@@ -45,7 +47,8 @@ public class K9ListActivity extends ListActivity implements K9ActivityMagic {
                 (keyCode == KeyEvent.KEYCODE_VOLUME_UP ||
                 keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)) {
 
-            final ListView listView = getListView();
+            //final ListView listView = getListView();
+            final ListView listView = (ListView) findViewById(R.id.list);
 
             int currentPosition = listView.getSelectedItemPosition();
             if (currentPosition == AdapterView.INVALID_POSITION || listView.isInTouchMode()) {

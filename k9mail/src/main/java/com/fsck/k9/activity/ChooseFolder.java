@@ -1,11 +1,6 @@
 
 package com.fsck.k9.activity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +24,11 @@ import com.fsck.k9.controller.MessagingController;
 import com.fsck.k9.controller.MessagingListener;
 import com.fsck.k9.mail.Folder;
 import com.fsck.k9.mailstore.LocalFolder;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class ChooseFolder extends K9ListActivity {
@@ -76,9 +76,9 @@ public class ChooseFolder extends K9ListActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.list_content_simple);
 
-        getListView().setFastScrollEnabled(true);
-        getListView().setItemsCanFocus(false);
-        getListView().setChoiceMode(ListView.CHOICE_MODE_NONE);
+        ((ListView) findViewById(R.id.list)).setFastScrollEnabled(true);
+        ((ListView) findViewById(R.id.list)).setItemsCanFocus(false);
+        ((ListView) findViewById(R.id.list)).setChoiceMode(ListView.CHOICE_MODE_NONE);
         Intent intent = getIntent();
         String accountUuid = intent.getStringExtra(EXTRA_ACCOUNT);
         mAccount = Preferences.getPreferences(this).getAccount(accountUuid);
@@ -112,12 +112,12 @@ public class ChooseFolder extends K9ListActivity {
             }
         };
 
-        setListAdapter(mAdapter);
+        ((ListView) findViewById(R.id.list)).setAdapter(mAdapter);
 
         mMode = mAccount.getFolderTargetMode();
         MessagingController.getInstance(getApplication()).listFolders(mAccount, false, mListener);
 
-        this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ((ListView) findViewById(R.id.list)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent result = new Intent();
@@ -149,7 +149,7 @@ public class ChooseFolder extends K9ListActivity {
                     break;
                 }
                 case MSG_SET_SELECTED_FOLDER: {
-                    getListView().setSelection(msg.arg1);
+                    ((ListView) findViewById(R.id.list)).setSelection(msg.arg1);
                     break;
                 }
             }
@@ -375,7 +375,7 @@ public class ChooseFolder extends K9ListActivity {
                          * populated to avoid possible race conditions because our
                          * FolderListFilter isn't really thread-safe.
                          */
-                        getListView().setTextFilterEnabled(true);
+                        ((ListView) findViewById(R.id.list)).setTextFilterEnabled(true);
                     }
                 });
             }

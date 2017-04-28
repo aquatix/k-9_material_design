@@ -1,20 +1,6 @@
 
 package com.fsck.k9.activity;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
@@ -31,6 +17,7 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -93,6 +80,19 @@ import com.fsck.k9.search.SearchAccount;
 import com.fsck.k9.search.SearchSpecification.Attribute;
 import com.fsck.k9.search.SearchSpecification.SearchField;
 import com.fsck.k9.view.ColorChip;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import de.cketti.library.changelog.ChangeLog;
 
@@ -407,10 +407,10 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         }
 
         requestWindowFeature(Window.FEATURE_PROGRESS);
-        mActionBar = getActionBar();
+        mActionBar = getSupportActionBar();
         initializeActionBar();
         setContentView(R.layout.accounts);
-        ListView listView = getListView();
+        ListView listView = (ListView) findViewById(R.id.list);
         listView.setOnItemClickListener(this);
         listView.setItemsCanFocus(false);
         listView.setScrollingCacheEnabled(false);
@@ -513,7 +513,7 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
      * Save the reference to a currently displayed dialog or a running AsyncTask (if available).
      */
     @Override
-    public Object onRetainNonConfigurationInstance() {
+    public Object onRetainCustomNonConfigurationInstance() {
         Object retain = null;
         if (mNonConfigurationInstance != null && mNonConfigurationInstance.retain()) {
             retain = mNonConfigurationInstance;
@@ -568,7 +568,7 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         newAccounts.addAll(accounts);
 
         mAdapter = new AccountsAdapter(newAccounts);
-        getListView().setAdapter(mAdapter);
+        ((ListView) findViewById(R.id.list)).setAdapter(mAdapter);
         if (!newAccounts.isEmpty()) {
             mHandler.progress(Window.PROGRESS_START);
         }
@@ -1160,7 +1160,7 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         // submenus don't actually set the menuInfo, so the "advanced"
         // submenu wouldn't work.
         if (menuInfo != null) {
-            mSelectedContextAccount = (BaseAccount)getListView().getItemAtPosition(menuInfo.position);
+            mSelectedContextAccount = (BaseAccount)((ListView) findViewById(R.id.list)).getItemAtPosition(menuInfo.position);
         }
         if (mSelectedContextAccount instanceof Account) {
             Account realAccount = (Account)mSelectedContextAccount;

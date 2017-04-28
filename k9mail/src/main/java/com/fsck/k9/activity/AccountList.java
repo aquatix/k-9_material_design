@@ -1,8 +1,5 @@
 package com.fsck.k9.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +17,9 @@ import com.fsck.k9.K9;
 import com.fsck.k9.Preferences;
 import com.fsck.k9.R;
 import com.fsck.k9.search.SearchAccount;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -41,7 +41,7 @@ public abstract class AccountList extends K9ListActivity implements OnItemClickL
 
         setContentView(R.layout.account_list);
 
-        ListView listView = getListView();
+        ListView listView = (ListView) findViewById(R.id.list);
         listView.setOnItemClickListener(this);
         listView.setItemsCanFocus(false);
     }
@@ -80,7 +80,7 @@ public abstract class AccountList extends K9ListActivity implements OnItemClickL
 
         accounts.addAll(realAccounts);
         AccountsAdapter adapter = new AccountsAdapter(accounts);
-        ListView listView = getListView();
+        ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.invalidate();
     }

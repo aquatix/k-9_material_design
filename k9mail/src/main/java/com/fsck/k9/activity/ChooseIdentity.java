@@ -31,16 +31,16 @@ public class ChooseIdentity extends K9ListActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.list_content_simple);
 
-        getListView().setTextFilterEnabled(true);
-        getListView().setItemsCanFocus(false);
-        getListView().setChoiceMode(ListView.CHOICE_MODE_NONE);
+        ((ListView) findViewById(R.id.list)).setTextFilterEnabled(true);
+        ((ListView) findViewById(R.id.list)).setItemsCanFocus(false);
+        ((ListView) findViewById(R.id.list)).setChoiceMode(ListView.CHOICE_MODE_NONE);
         Intent intent = getIntent();
         String accountUuid = intent.getStringExtra(EXTRA_ACCOUNT);
         mAccount = Preferences.getPreferences(this).getAccount(accountUuid);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
-        setListAdapter(adapter);
+        ((ListView) findViewById(R.id.list)).setAdapter(adapter);
         setupClickListeners();
     }
 
@@ -69,7 +69,7 @@ public class ChooseIdentity extends K9ListActivity {
     }
 
     protected void setupClickListeners() {
-        this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ((ListView) findViewById(R.id.list)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Identity identity = mAccount.getIdentity(position);
                 String email = identity.getEmail();
