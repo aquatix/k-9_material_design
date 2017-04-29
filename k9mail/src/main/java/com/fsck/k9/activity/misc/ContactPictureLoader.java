@@ -1,14 +1,5 @@
 package com.fsck.k9.activity.misc;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
-import java.util.Locale;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.app.ActivityManager;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -18,16 +9,27 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.fsck.k9.helper.Contacts;
 import com.fsck.k9.mail.Address;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.util.Locale;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ContactPictureLoader {
     /**
@@ -62,16 +64,22 @@ public class ContactPictureLoader {
      * @see <a href="http://developer.android.com/design/style/color.html">Color palette used</a>
      */
     private final static int CONTACT_DUMMY_COLORS_ARGB[] = {
-        0xff33B5E5,
-        0xffAA66CC,
-        0xff99CC00,
-        0xffFFBB33,
-        0xffFF4444,
-        0xff0099CC,
-        0xff9933CC,
-        0xff669900,
-        0xffFF8800,
-        0xffCC0000
+            0xffE06055,
+            0xffAED581,
+            0xffF6BF26,
+            0xff9E9E9E,
+            0xff9FA8DA,
+            0xff4DB6AC,
+            0xff7986CB,
+            0xffBA68C8,
+            0xffFF8A65,
+            0xff4DD0E1,
+            0xff5E97F6,
+            0xff91A4AE,
+            0xff9575CD,
+            0xffFFA726,
+            0xff57BB8A,
+            0xff90A4AE
     };
 
     /**
@@ -192,7 +200,10 @@ public class ContactPictureLoader {
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
         paint.setARGB(255, 255, 255, 255);
-        paint.setTextSize(mPictureSizeInPx * 3 / 4); // just scale this down a bit
+        paint.setTextSize(mPictureSizeInPx * 3 / 5); // just scale this down a bit
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            paint.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+        }
         Rect rect = new Rect();
         paint.getTextBounds(letter, 0, 1, rect);
         float width = paint.measureText(letter);
