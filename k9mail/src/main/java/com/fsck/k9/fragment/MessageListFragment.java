@@ -1003,6 +1003,7 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
         mListView.setFastScrollEnabled(true);
         mListView.setScrollingCacheEnabled(false);
         mListView.setOnItemClickListener(this);
+        mListView.setDividerHeight(2);
 
         registerForContextMenu(mListView);
     }
