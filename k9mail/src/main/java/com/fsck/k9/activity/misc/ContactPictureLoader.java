@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
@@ -186,30 +188,35 @@ public class ContactPictureLoader {
      * Calculates a bitmap with a color and a capital letter for contacts without picture.
      */
     private Bitmap calculateFallbackBitmap(Address address) {
-        Bitmap result = Bitmap.createBitmap(mPictureSizeInPx, mPictureSizeInPx,
-                Bitmap.Config.ARGB_8888);
-
+        Bitmap result = Bitmap.createBitmap(mPictureSizeInPx, mPictureSizeInPx, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
 
-        int rgb = calcUnknownContactColor(address);
-        result.eraseColor(rgb);
-
+        int circleColor = calcUnknownContactColor(address);
         String letter = calcUnknownContactLetter(address);
 
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setARGB(255, 255, 255, 255);
-        paint.setTextSize(mPictureSizeInPx * 3 / 5); // just scale this down a bit
+        Paint circlePaint = new Paint();
+        Paint textPaint = new Paint();
+
+        textPaint.setAntiAlias(true);
+        textPaint.setStyle(Paint.Style.FILL);
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(mPictureSizeInPx * 3 / 5); // just scale this down a bit
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            paint.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+            textPaint.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
         }
         Rect rect = new Rect();
-        paint.getTextBounds(letter, 0, 1, rect);
-        float width = paint.measureText(letter);
+        textPaint.getTextBounds(letter, 0, 1, rect);
+        float width = textPaint.measureText(letter);
+
+        circlePaint.setColor(circleColor);
+        circlePaint.setAntiAlias(true);
+        float r = mPictureSizeInPx / 2f;
+
+        canvas.drawCircle(r, r, r, circlePaint);
         canvas.drawText(letter,
-                (mPictureSizeInPx / 2f) - (width / 2f),
-                (mPictureSizeInPx / 2f) + (rect.height() / 2f), paint);
+                r - (width / 2f),
+                r + (rect.height() / 2f),
+                textPaint);
 
         return result;
     }
@@ -314,6 +321,8 @@ public class ContactPictureLoader {
 
             if (bitmap == null) {
                 bitmap = calculateFallbackBitmap(mAddress);
+            } else {
+                bitmap = transformToCircleBitmap(bitmap);
             }
 
             // Save the picture of the contact with that email address in the bitmap cache
@@ -352,5 +361,37 @@ public class ContactPictureLoader {
         public ContactPictureRetrievalTask getContactPictureRetrievalTask() {
             return mAsyncTaskReference.get();
         }
+    }
+
+    private Bitmap transformToCircleBitmap(Bitmap rectBitmap) {
+        int size = rectBitmap.getWidth();
+
+        // if bitmap is non-square first create square one
+        if (size != rectBitmap.getHeight()) {
+            int sizeX = size;
+            int sizeY = rectBitmap.getHeight();
+            size = Math.min(sizeY, sizeX);
+            sizeX = (sizeX - size) / 2;
+            sizeY = (sizeY - size) / 2;
+
+            Bitmap squareSource = Bitmap.createBitmap(rectBitmap, sizeX, sizeY, size, size);
+
+            rectBitmap.recycle();
+            rectBitmap = squareSource;
+        }
+
+        Bitmap circleBitmap = Bitmap.createBitmap(size, size, rectBitmap.getConfig());
+        Canvas canvas = new Canvas(circleBitmap);
+        Paint paint = new Paint();
+        float centerAndRadius = size / 2f;
+        BitmapShader shader = new BitmapShader(rectBitmap, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
+
+        paint.setShader(shader);
+        paint.setAntiAlias(true);
+        canvas.drawCircle(centerAndRadius, centerAndRadius, centerAndRadius, paint);
+
+        rectBitmap.recycle();
+
+        return circleBitmap;
     }
 }
