@@ -1,20 +1,6 @@
 package com.fsck.k9.fragment;
 
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.Future;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -33,6 +19,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -117,6 +104,20 @@ import com.fsck.k9.search.SqlQueryBuilder;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.Future;
 
 
 public class MessageListFragment extends Fragment implements OnItemClickListener,
@@ -1951,6 +1952,15 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
             }
 
             holder.date.setText(displayDate);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                holder.preview.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+                if (holder.from != null ) holder.from.setTypeface(Typeface.create("sans-serif-light",
+                        maybeBoldTypeface));
+                if (holder.subject != null ) holder.subject.setTypeface(Typeface.create("sans-serif-light",
+                        maybeBoldTypeface));
+                holder.date.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+            }
         }
 
         private String getPreview(Cursor cursor) {

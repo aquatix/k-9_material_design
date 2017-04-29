@@ -22,17 +22,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/actionbar_title_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:singleLine="true"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="?android:attr/textColorSecondary" />
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
         </LinearLayout>
 
         <ProgressBar
