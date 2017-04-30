@@ -54,11 +54,17 @@
         android:orientation="horizontal"
         >
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="4dip"
+            android:background="?android:attr/dividerVertical" />
+
         <ImageButton
             android:id="@+id/folders"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="2dp"
             android:layout_marginRight="3dp"
             android:background="?android:attr/selectableItemBackground"
             android:focusable="false"
