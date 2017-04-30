@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        android:id="@+id/folder_list_item_layout"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?android:attr/listPreferredItemHeight"
-        android:paddingRight="4dip"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/folder_list_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:paddingRight="4dp">
 
     <View
-            android:id="@+id/chip"
-            android:layout_height="match_parent"
-            android:layout_width="8dip"
-            android:background="#ff336699"
-            android:layout_marginRight="8dip"
-            />
-
+        android:id="@+id/chip"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:background="#ff336699"
+        />
 
     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:paddingLeft="12dp">
+
+        <TextView
+            android:id="@+id/folder_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="?android:attr/textColorPrimary"/>
+
+        <TextView
+            android:id="@+id/folder_status"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:paddingBottom="2dip"
-
-            android:paddingLeft="6dip">
-
-        <TextView
-                android:id="@+id/folder_name"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-        <TextView
-                android:id="@+id/folder_status"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:textColor="?android:attr/textColorTertiary"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorSecondary"/>
 
     </LinearLayout>
 
