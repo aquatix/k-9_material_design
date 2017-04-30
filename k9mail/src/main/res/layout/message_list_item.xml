@@ -9,7 +9,7 @@
         android:id="@+id/chip"
         android:layout_width="4dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="4dp"
+        android:layout_marginRight="6dp"
         android:adjustViewBounds="false"
         />
 
@@ -31,26 +31,10 @@
             android:clickable="false"
             android:focusable="false"
             android:gravity="center"
-            android:paddingLeft="4dp"
-            android:paddingRight="0dp"
             android:visibility="visible"
             />
 
     </LinearLayout>
-
-    <com.fsck.k9.view.CustomQuickContactBadge
-        android:id="@+id/contact_badge"
-        style="?android:attr/quickContactBadgeStyleWindowLarge"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_contact_picture"/>
-
 
     <RelativeLayout
         android:id="@+id/list_item_inner"
@@ -60,31 +44,46 @@
         android:clickable="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:paddingBottom="6dp"
-        android:paddingTop="5dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:paddingBottom="12dp"
+        android:paddingTop="10dp">
+
+        <com.fsck.k9.view.CustomQuickContactBadge
+            android:id="@+id/contact_badge"
+            style="?android:attr/quickContactBadgeStyleWindowLarge"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/transparent"/>
 
         <TextView
             android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="false"
-            android:layout_alignParentLeft="true"
             android:layout_alignWithParentIfMissing="false"
+            android:layout_toRightOf="@+id/contact_badge"
             android:layout_below="@+id/subject_wrapper"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:layout_toLeftOf="@+id/flagged_bottom_right"
+            android:lineSpacingExtra="3dp"
             android:bufferType="spannable"
             android:gravity="top"
             android:longClickable="false"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="?android:attr/textColorPrimary"/>
+            android:textColor="?android:attr/textColorSecondary"/>
 
         <LinearLayout
             android:id="@+id/subject_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="false"
+            android:layout_toRightOf="@+id/contact_badge"
             android:layout_alignParentLeft="false"
             android:layout_alignParentRight="false"
             android:layout_alignParentTop="true"
@@ -96,7 +95,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_marginLeft="1dp"
+                android:layout_marginLeft="2dp"
                 android:layout_weight="0.3"
                 android:ellipsize="end"
                 android:maxLines="1"
@@ -108,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:layout_marginLeft="1dp"
+                android:layout_marginLeft="2dp"
                 android:layout_weight="0.7"
                 android:ellipsize="marquee"
                 android:maxLines="1"
@@ -154,7 +153,6 @@
             android:layout_toLeftOf="@+id/flagged_center_right"
             android:maxLines="1"
             android:paddingLeft="3dp"
-            android:paddingRight="8dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="?android:attr/textColorSecondary"/>
 
@@ -167,8 +165,6 @@
             android:layout_below="@+id/date"
             android:focusable="false"
             android:gravity="center_vertical"
-            android:paddingLeft="2dp"
-            android:paddingRight="4dp"
             android:paddingTop="5dp"
             android:visibility="visible"/>
 
