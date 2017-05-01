@@ -262,7 +262,7 @@ public class FolderList extends K9ListActivity {
         mActionBar = getSupportActionBar();
         initializeActionBar();
         setContentView(R.layout.folder_list);
-        mListView = (ListView) findViewById(R.id.list);
+        mListView = (ListView) findViewById(android.R.id.list);
         mListView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mListView.setLongClickable(true);
         mListView.setFastScrollEnabled(true);
@@ -344,8 +344,8 @@ public class FolderList extends K9ListActivity {
         mAdapter = new FolderListAdapter();
         restorePreviousData();
 
-        ((ListView) findViewById(R.id.list)).setAdapter(mAdapter);
-        ((ListView) findViewById(R.id.list)).setTextFilterEnabled(mAdapter.getFilter() != null); // should never be false but better safe then sorry
+        ((ListView) findViewById(android.R.id.list)).setAdapter(mAdapter);
+        ((ListView) findViewById(android.R.id.list)).setTextFilterEnabled(mAdapter.getFilter() != null); // should never be false but better safe then sorry
     }
 
     @SuppressWarnings("unchecked")

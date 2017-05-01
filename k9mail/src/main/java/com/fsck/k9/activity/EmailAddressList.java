@@ -33,7 +33,7 @@ public class EmailAddressList extends K9ListActivity implements OnItemClickListe
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.email_address_list_item, contact.emailAddresses);
 
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         setTitle(contact.displayName);

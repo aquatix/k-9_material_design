@@ -41,7 +41,7 @@ public abstract class AccountList extends K9ListActivity implements OnItemClickL
 
         setContentView(R.layout.account_list);
 
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setOnItemClickListener(this);
         listView.setItemsCanFocus(false);
     }
@@ -80,7 +80,7 @@ public abstract class AccountList extends K9ListActivity implements OnItemClickL
 
         accounts.addAll(realAccounts);
         AccountsAdapter adapter = new AccountsAdapter(accounts);
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setAdapter(adapter);
         listView.invalidate();
     }

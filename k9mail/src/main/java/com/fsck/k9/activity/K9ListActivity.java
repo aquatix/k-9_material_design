@@ -48,7 +48,7 @@ public class K9ListActivity extends AppCompatActivity implements K9ActivityMagic
                 keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)) {
 
             //final ListView listView = getListView();
-            final ListView listView = (ListView) findViewById(R.id.list);
+            final ListView listView = (ListView) findViewById(android.R.id.list);
 
             int currentPosition = listView.getSelectedItemPosition();
             if (currentPosition == AdapterView.INVALID_POSITION || listView.isInTouchMode()) {

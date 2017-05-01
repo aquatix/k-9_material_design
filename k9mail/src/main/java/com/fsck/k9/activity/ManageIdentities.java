@@ -22,13 +22,13 @@ public class ManageIdentities extends ChooseIdentity {
 
     @Override
     protected void setupClickListeners() {
-        ((ListView) findViewById(R.id.list)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ((ListView) findViewById(android.R.id.list)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 editItem(position);
             }
         });
 
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(android.R.id.list);
         registerForContextMenu(listView);
     }
 

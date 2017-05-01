@@ -410,7 +410,7 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         mActionBar = getSupportActionBar();
         initializeActionBar();
         setContentView(R.layout.accounts);
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setOnItemClickListener(this);
         listView.setItemsCanFocus(false);
         listView.setScrollingCacheEnabled(false);
@@ -568,7 +568,7 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         newAccounts.addAll(accounts);
 
         mAdapter = new AccountsAdapter(newAccounts);
-        ((ListView) findViewById(R.id.list)).setAdapter(mAdapter);
+        ((ListView) findViewById(android.R.id.list)).setAdapter(mAdapter);
         if (!newAccounts.isEmpty()) {
             mHandler.progress(Window.PROGRESS_START);
         }
@@ -1160,7 +1160,7 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         // submenus don't actually set the menuInfo, so the "advanced"
         // submenu wouldn't work.
         if (menuInfo != null) {
-            mSelectedContextAccount = (BaseAccount)((ListView) findViewById(R.id.list)).getItemAtPosition(menuInfo.position);
+            mSelectedContextAccount = (BaseAccount)((ListView) findViewById(android.R.id.list)).getItemAtPosition(menuInfo.position);
         }
         if (mSelectedContextAccount instanceof Account) {
             Account realAccount = (Account)mSelectedContextAccount;

@@ -76,9 +76,9 @@ public class ChooseFolder extends K9ListActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.list_content_simple);
 
-        ((ListView) findViewById(R.id.list)).setFastScrollEnabled(true);
-        ((ListView) findViewById(R.id.list)).setItemsCanFocus(false);
-        ((ListView) findViewById(R.id.list)).setChoiceMode(ListView.CHOICE_MODE_NONE);
+        ((ListView) findViewById(android.R.id.list)).setFastScrollEnabled(true);
+        ((ListView) findViewById(android.R.id.list)).setItemsCanFocus(false);
+        ((ListView) findViewById(android.R.id.list)).setChoiceMode(ListView.CHOICE_MODE_NONE);
         Intent intent = getIntent();
         String accountUuid = intent.getStringExtra(EXTRA_ACCOUNT);
         mAccount = Preferences.getPreferences(this).getAccount(accountUuid);
@@ -112,12 +112,12 @@ public class ChooseFolder extends K9ListActivity {
             }
         };
 
-        ((ListView) findViewById(R.id.list)).setAdapter(mAdapter);
+        ((ListView) findViewById(android.R.id.list)).setAdapter(mAdapter);
 
         mMode = mAccount.getFolderTargetMode();
         MessagingController.getInstance(getApplication()).listFolders(mAccount, false, mListener);
 
-        ((ListView) findViewById(R.id.list)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ((ListView) findViewById(android.R.id.list)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent result = new Intent();
@@ -149,7 +149,7 @@ public class ChooseFolder extends K9ListActivity {
                     break;
                 }
                 case MSG_SET_SELECTED_FOLDER: {
-                    ((ListView) findViewById(R.id.list)).setSelection(msg.arg1);
+                    ((ListView) findViewById(android.R.id.list)).setSelection(msg.arg1);
                     break;
                 }
             }
@@ -375,7 +375,7 @@ public class ChooseFolder extends K9ListActivity {
                          * populated to avoid possible race conditions because our
                          * FolderListFilter isn't really thread-safe.
                          */
-                        ((ListView) findViewById(R.id.list)).setTextFilterEnabled(true);
+                        ((ListView) findViewById(android.R.id.list)).setTextFilterEnabled(true);
                     }
                 });
             }
