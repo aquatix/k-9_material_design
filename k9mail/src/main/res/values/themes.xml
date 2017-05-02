@@ -1,11 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="Theme.K9.Startup" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-    </style>
+    <style name="Theme.K9.Startup" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <!-- Empty base themes that can be easily replaced by RRO (Runtime Resource Overlay) themes -->
     <style name="Theme.K9.Light.Base" parent="Theme.AppCompat.Light.DarkActionBar" />
