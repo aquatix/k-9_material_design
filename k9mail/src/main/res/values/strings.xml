@@ -801,7 +801,14 @@ Please submit bug reports, contribute new features and ask questions at
     <string name="setting_theme_dark">Dark</string>
     <string name="setting_theme_light">Light</string>
     <string name="setting_theme_blue">Blue</string>
+    <string name="setting_theme_blue_light">Light Blue</string>
     <string name="setting_theme_red">Red</string>
+    <string name="setting_theme_dark_grey">Dark Grey</string>
+    <string name="setting_theme_green">Green</string>
+    <string name="setting_theme_yellow">Yellow</string>
+    <string name="setting_theme_orange">Orange</string>
+    <string name="setting_theme_cardinal_red">Cardinal red</string>
+    <string name="setting_theme_purple">Purple</string>
     <string name="display_preferences">Display</string>
     <string name="global_preferences">Global</string>
     <string name="debug_preferences">Debugging</string>

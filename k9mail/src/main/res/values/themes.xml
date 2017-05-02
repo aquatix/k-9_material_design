@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="Theme.K9.Startup" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="Theme.K9.Startup" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <!-- Empty base themes that can be easily replaced by RRO (Runtime Resource Overlay) themes -->
-    <style name="Theme.K9.Light.Base" parent="Theme.AppCompat.Light.DarkActionBar" />
-    <style name="Theme.K9.Dark.Base" parent="Theme.AppCompat" />
+    <style name="Theme.K9.Light.Base" parent="Theme.AppCompat.Light.DarkActionBar"/>
+
+    <style name="Theme.K9.Dark.Base" parent="Theme.AppCompat"/>
 
     <style name="Theme.K9.Light.Common" parent="Theme.K9.Light.Base">
         <item name="actionbarTitleColor">@android:color/white</item>
@@ -145,19 +146,63 @@
         <item name="openpgp_dark_grey">#bbb</item>
     </style>
 
-    <style name="Theme.K9.Light" parent="Theme.K9.Light.Common" />
-    <style name="Theme.K9.Dark" parent="Theme.K9.Dark.Common" />
+    <style name="Theme.K9.Light" parent="Theme.K9.Light.Common"/>
 
+    <style name="Theme.K9.Dark" parent="Theme.K9.Dark.Common"/>
+
+    <!-- Custom color themes. -->
     <style name="Theme.K9.Blue" parent="Theme.K9.Light.Common">
         <item name="colorAccent">@color/colorAccent_Blue</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_Blue</item>
         <item name="colorPrimary">@color/colorPrimary_Blue</item>
     </style>
 
+    <style name="Theme.K9.Blue_Light" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Blue_Light</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Blue_Light</item>
+        <item name="colorPrimary">@color/colorPrimary_Blue_Light</item>
+    </style>
+
     <style name="Theme.K9.Red" parent="Theme.K9.Light.Common">
         <item name="colorAccent">@color/colorAccent_Red</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_Red</item>
         <item name="colorPrimary">@color/colorPrimary_Red</item>
+    </style>
+
+    <style name="Theme.K9.Dark_Grey" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Dark_Grey</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Dark_Grey</item>
+        <item name="colorPrimary">@color/colorPrimary_Dark_Grey</item>
+    </style>
+
+    <style name="Theme.K9.Green" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Green</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Green</item>
+        <item name="colorPrimary">@color/colorPrimary_Green</item>
+    </style>
+
+    <style name="Theme.K9.Yellow" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Yellow</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Yellow</item>
+        <item name="colorPrimary">@color/colorPrimary_Yellow</item>
+    </style>
+
+    <style name="Theme.K9.Orange" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Orange</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Orange</item>
+        <item name="colorPrimary">@color/colorPrimary_Orange</item>
+    </style>
+
+    <style name="Theme.K9.Cardinal_Red" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Cardinal_Red</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Cardinal_Red</item>
+        <item name="colorPrimary">@color/colorPrimary_Cardinal_Red</item>
+    </style>
+
+    <style name="Theme.K9.Purple" parent="Theme.K9.Light.Common">
+        <item name="colorAccent">@color/colorAccent_Purple</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_Purple</item>
+        <item name="colorPrimary">@color/colorPrimary_Purple</item>
     </style>
 
     <style name="Theme.K9.Dialog.Light" parent="Theme.K9.Light">

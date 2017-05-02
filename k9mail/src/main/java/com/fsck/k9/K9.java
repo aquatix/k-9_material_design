@@ -759,8 +759,22 @@ public class K9 extends Application {
             K9.setK9Theme(Theme.DARK);
         } else if (themeValue == Theme.BLUE.ordinal()) {
             K9.setK9Theme(Theme.BLUE);
+        } else if (themeValue == Theme.BLUE_LIGHT.ordinal()) {
+            K9.setK9Theme(Theme.BLUE_LIGHT);
         } else if (themeValue == Theme.RED.ordinal()) {
             K9.setK9Theme(Theme.RED);
+        } else if (themeValue == Theme.DARK_GREY.ordinal()) {
+            K9.setK9Theme(Theme.DARK_GREY);
+        } else if (themeValue == Theme.GREEN.ordinal()) {
+            K9.setK9Theme(Theme.GREEN);
+        } else if (themeValue == Theme.YELLOW.ordinal()) {
+            K9.setK9Theme(Theme.YELLOW);
+        } else if (themeValue == Theme.ORANGE.ordinal()) {
+            K9.setK9Theme(Theme.ORANGE);
+        } else if (themeValue == Theme.CARDINAL_RED.ordinal()) {
+            K9.setK9Theme(Theme.CARDINAL_RED);
+        } else if (themeValue == Theme.PURPLE.ordinal()) {
+            K9.setK9Theme(Theme.PURPLE);
         } else {
             K9.setK9Theme(Theme.LIGHT);
         }
@@ -830,7 +844,14 @@ public class K9 extends Application {
         LIGHT,
         DARK,
         BLUE,
+        BLUE_LIGHT,
         RED,
+        DARK_GREY,
+        GREEN,
+        YELLOW,
+        ORANGE,
+        CARDINAL_RED,
+        PURPLE,
         USE_GLOBAL
     }
 
@@ -842,8 +863,29 @@ public class K9 extends Application {
            case BLUE: {
                return R.style.Theme_K9_Blue;
            }
+           case BLUE_LIGHT: {
+               return R.style.Theme_K9_Blue_Light;
+           }
            case RED: {
                return R.style.Theme_K9_Red;
+           }
+           case DARK_GREY: {
+               return R.style.Theme_K9_Dark_Grey;
+           }
+           case GREEN: {
+               return R.style.Theme_K9_Green;
+           }
+           case YELLOW: {
+               return R.style.Theme_K9_Yellow;
+           }
+           case ORANGE: {
+               return R.style.Theme_K9_Orange;
+           }
+           case CARDINAL_RED: {
+               return R.style.Theme_K9_Cardinal_Red;
+           }
+           case PURPLE: {
+               return R.style.Theme_K9_Purple;
            }
            default: {
                return R.style.Theme_K9_Dark;
