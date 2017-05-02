@@ -1,5 +1,28 @@
 package com.fsck.k9.preferences;
 
+import android.os.Environment;
+
+import com.fsck.k9.Account;
+import com.fsck.k9.Account.SortType;
+import com.fsck.k9.FontSizes;
+import com.fsck.k9.K9;
+import com.fsck.k9.K9.NotificationHideSubject;
+import com.fsck.k9.K9.NotificationQuickDelete;
+import com.fsck.k9.K9.SplitViewMode;
+import com.fsck.k9.K9.Theme;
+import com.fsck.k9.R;
+import com.fsck.k9.preferences.Settings.BooleanSetting;
+import com.fsck.k9.preferences.Settings.ColorSetting;
+import com.fsck.k9.preferences.Settings.EnumSetting;
+import com.fsck.k9.preferences.Settings.FontSizeSetting;
+import com.fsck.k9.preferences.Settings.IntegerRangeSetting;
+import com.fsck.k9.preferences.Settings.InvalidSettingValueException;
+import com.fsck.k9.preferences.Settings.PseudoEnumSetting;
+import com.fsck.k9.preferences.Settings.SettingsDescription;
+import com.fsck.k9.preferences.Settings.SettingsUpgrader;
+import com.fsck.k9.preferences.Settings.V;
+import com.fsck.k9.preferences.Settings.WebFontSizeSetting;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,19 +32,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
-import android.os.Environment;
-
-import com.fsck.k9.Account;
-import com.fsck.k9.FontSizes;
-import com.fsck.k9.K9;
-import com.fsck.k9.K9.NotificationHideSubject;
-import com.fsck.k9.K9.NotificationQuickDelete;
-import com.fsck.k9.K9.SplitViewMode;
-import com.fsck.k9.K9.Theme;
-import com.fsck.k9.R;
-import com.fsck.k9.Account.SortType;
-import com.fsck.k9.preferences.Settings.*;
 
 import static com.fsck.k9.K9.LockScreenNotificationVisibility;
 
@@ -446,6 +456,8 @@ public class GlobalSettings {
     public static class ThemeSetting extends SettingsDescription {
         private static final String THEME_LIGHT = "light";
         private static final String THEME_DARK = "dark";
+        private static final String THEME_BLUE = "blue";
+        private static final String THEME_RED = "red";
 
         public ThemeSetting(K9.Theme defaultValue) {
             super(defaultValue);
@@ -475,6 +487,10 @@ public class GlobalSettings {
                 return K9.Theme.LIGHT;
             } else if (THEME_DARK.equals(value)) {
                 return K9.Theme.DARK;
+            } else if (THEME_BLUE.equals(value)) {
+                return K9.Theme.BLUE;
+            } else if (THEME_RED.equals(value)) {
+                return Theme.RED;
             }
 
             throw new InvalidSettingValueException();
@@ -485,6 +501,12 @@ public class GlobalSettings {
             switch ((K9.Theme) value) {
                 case DARK: {
                     return THEME_DARK;
+                }
+                case BLUE: {
+                    return THEME_BLUE;
+                }
+                case RED: {
+                    return THEME_RED;
                 }
                 default: {
                     return THEME_LIGHT;

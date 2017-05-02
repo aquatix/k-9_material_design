@@ -533,22 +533,30 @@
     <string-array name="settings_theme_entries">
         <item>@string/setting_theme_light</item>
         <item>@string/setting_theme_dark</item>
+        <item>@string/setting_theme_blue</item>
+        <item>@string/setting_theme_red</item>
     </string-array>
 
     <string-array name="settings_theme_values" translatable="false">
         <item>light</item>
         <item>dark</item>
+        <item>blue</item>
+        <item>red</item>
     </string-array>
 
     <string-array name="settings_message_theme_entries">
         <item>@string/setting_theme_light</item>
         <item>@string/setting_theme_dark</item>
+        <item>@string/setting_theme_blue</item>
+        <item>@string/setting_theme_red</item>
         <item>@string/setting_theme_global</item>
     </string-array>
 
     <string-array name="settings_message_theme_values" translatable="false">
         <item>light</item>
         <item>dark</item>
+        <item>blue</item>
+        <item>red</item>
         <item>global</item>
     </string-array>
 

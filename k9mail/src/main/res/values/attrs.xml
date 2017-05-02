@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="actionbarTitleColor" format="color" />
+
     <declare-styleable name="K9Styles">
         <attr name="iconFolder" format="reference" />
         <attr name="iconListItemMenu" format="reference" />

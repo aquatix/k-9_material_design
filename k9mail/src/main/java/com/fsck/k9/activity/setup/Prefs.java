@@ -1,12 +1,5 @@
 package com.fsck.k9.activity.setup;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,8 +27,14 @@ import com.fsck.k9.preferences.CheckBoxListPreference;
 import com.fsck.k9.preferences.Storage;
 import com.fsck.k9.preferences.StorageEditor;
 import com.fsck.k9.preferences.TimePickerPreference;
-
 import com.fsck.k9.service.MailService;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 public class Prefs extends K9PreferenceActivity {
@@ -428,6 +427,8 @@ public class Prefs extends K9PreferenceActivity {
     private static String themeIdToName(K9.Theme theme) {
         switch (theme) {
             case DARK: return "dark";
+            case BLUE: return "blue";
+            case RED: return "red";
             case USE_GLOBAL: return "global";
             default: return "light";
         }
@@ -436,7 +437,13 @@ public class Prefs extends K9PreferenceActivity {
     private static K9.Theme themeNameToId(String theme) {
         if (TextUtils.equals(theme, "dark")) {
             return K9.Theme.DARK;
-        } else if (TextUtils.equals(theme, "global")) {
+        } else if (TextUtils.equals(theme, "blue")) {
+            return K9.Theme.BLUE;
+        }
+        else if (TextUtils.equals(theme, "red")) {
+            return K9.Theme.RED;
+        }
+        else if (TextUtils.equals(theme, "global")) {
             return K9.Theme.USE_GLOBAL;
         } else {
             return K9.Theme.LIGHT;

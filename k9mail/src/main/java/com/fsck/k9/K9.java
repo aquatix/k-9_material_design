@@ -755,8 +755,12 @@ public class K9 extends Application {
         int themeValue = storage.getInt("theme", Theme.LIGHT.ordinal());
         // We used to save the resource ID of the theme. So convert that to the new format if
         // necessary.
-        if (themeValue == Theme.DARK.ordinal() || themeValue == android.R.style.Theme) {
+        if (themeValue == Theme.DARK.ordinal()) {
             K9.setK9Theme(Theme.DARK);
+        } else if (themeValue == Theme.BLUE.ordinal()) {
+            K9.setK9Theme(Theme.BLUE);
+        } else if (themeValue == Theme.RED.ordinal()) {
+            K9.setK9Theme(Theme.RED);
         } else {
             K9.setK9Theme(Theme.LIGHT);
         }
@@ -825,11 +829,26 @@ public class K9 extends Application {
     public enum Theme {
         LIGHT,
         DARK,
+        BLUE,
+        RED,
         USE_GLOBAL
     }
 
     public static int getK9ThemeResourceId(Theme themeId) {
-        return (themeId == Theme.LIGHT) ? R.style.Theme_K9_Light : R.style.Theme_K9_Dark;
+       switch (themeId) {
+           case LIGHT: {
+               return R.style.Theme_K9_Light;
+           }
+           case BLUE: {
+               return R.style.Theme_K9_Blue;
+           }
+           case RED: {
+               return R.style.Theme_K9_Red;
+           }
+           default: {
+               return R.style.Theme_K9_Dark;
+           }
+       }
     }
 
     public static int getK9ThemeResourceId() {

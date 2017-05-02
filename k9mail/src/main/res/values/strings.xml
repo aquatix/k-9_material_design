@@ -800,6 +800,8 @@ Please submit bug reports, contribute new features and ask questions at
     <string name="setting_theme_global">Use app theme</string>
     <string name="setting_theme_dark">Dark</string>
     <string name="setting_theme_light">Light</string>
+    <string name="setting_theme_blue">Blue</string>
+    <string name="setting_theme_red">Red</string>
     <string name="display_preferences">Display</string>
     <string name="global_preferences">Global</string>
     <string name="debug_preferences">Debugging</string>

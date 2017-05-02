@@ -6,5 +6,45 @@
     <color name="colorPrimaryDark">#455A64</color>
     <color name="colorAccent">#E91E63</color>
 
+    <color name="colorPrimary_Classic">#DDDDDD</color>
+    <color name="colorPrimaryDark_Classic">#000000</color>
+    <color name="colorAccent_Classic">#0099CC</color>
+
+    <color name="colorPrimary_Blue">#2A56C6</color>
+    <color name="colorPrimaryDark_Blue">#1C3AA9</color>
+    <color name="colorAccent_Blue">#2A56C6</color>
+
+    <color name="colorPrimary_Blue_Light">#039BE5</color>
+    <color name="colorPrimaryDark_Blue_Light">#027CB7</color>
+    <color name="colorAccent_Blue_Light">#039BE5</color>
+
+    <color name="colorPrimary_Red">#DB4437</color>
+    <color name="colorPrimaryDark_Red">#B93221</color>
+    <color name="colorAccent_Red">#4285F4</color>
+
+    <color name="colorPrimary_Dark_Grey">#455A64</color>
+    <color name="colorPrimaryDark_Dark_Grey">#374850</color>
+    <color name="colorAccent_Dark_Grey">#455A64</color>
+
+    <color name="colorPrimary_Green">#0F9D58</color>
+    <color name="colorPrimaryDark_Green">#0C7E46</color>
+    <color name="colorAccent_Green">#0F9D58</color>
+
+    <color name="colorPrimary_Yellow">#FFBB00</color>
+    <color name="colorPrimaryDark_Yellow">#F99F00</color>
+    <color name="colorAccent_Yellow">#4182EF</color>
+
+    <color name="colorPrimary_Orange">#FF5722</color>
+    <color name="colorPrimaryDark_Orange">#CC461B</color>
+    <color name="colorAccent_Orange">#FF5722</color>
+
+    <color name="colorPrimary_Cardinal_Red">#FF1744</color>
+    <color name="colorPrimaryDark_Cardinal_Red">#CC1236</color>
+    <color name="colorAccent_Cardinal_Red">#FF1744</color>
+
+    <color name="colorPrimary_Purple">#9C27B0</color>
+    <color name="colorPrimaryDark_Purple">#7D1F8D</color>
+    <color name="colorAccent_Purple">#9C27B0</color>
+
     <color name="light_black">#444</color>
 </resources>
