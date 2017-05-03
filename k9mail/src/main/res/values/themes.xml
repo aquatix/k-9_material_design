@@ -53,7 +53,7 @@
         <item name="textColorPrimaryRecipientDropdown">@android:color/primary_text_dark</item>
         <item name="textColorSecondaryRecipientDropdown">@android:color/secondary_text_dark</item>
         <item name="messageListSelectedBackgroundColor">#8038B8E2</item>
-        <item name="messageListReadItemBackgroundColor">#c0cdcdcd</item>
+        <item name="messageListReadItemBackgroundColor">#EEEEEE</item>
         <item name="messageListUnreadItemBackgroundColor">#00ffffff</item>
         <item name="messageListThreadCountForegroundColor">?android:attr/colorBackground</item>
         <item name="messageListThreadCountBackground">@drawable/thread_count_box_dark</item>
