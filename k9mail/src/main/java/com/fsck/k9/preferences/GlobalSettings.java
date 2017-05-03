@@ -454,17 +454,6 @@ public class GlobalSettings {
      * The theme setting.
      */
     public static class ThemeSetting extends SettingsDescription {
-        private static final String THEME_LIGHT = "light";
-        private static final String THEME_DARK = "dark";
-        private static final String THEME_BLUE = "blue";
-        private static final String THEME_BLUE_LIGHT = "blue_light";
-        private static final String THEME_RED = "red";
-        private static final String THEME_DARK_GREY = "dark_grey";
-        private static final String THEME_GREEN = "green";
-        private static final String THEME_YELLOW = "yellow";
-        private static final String THEME_ORANGE = "orange";
-        private static final String THEME_CARDINAL_RED = "cardinal_red";
-        private static final String THEME_PURPLE = "purple";
 
         public ThemeSetting(K9.Theme defaultValue) {
             super(defaultValue);
@@ -474,86 +463,38 @@ public class GlobalSettings {
         public Object fromString(String value) throws InvalidSettingValueException {
             try {
                 Integer theme = Integer.parseInt(value);
-                if (theme == K9.Theme.LIGHT.ordinal() ||
-                        // We used to store the resource ID of the theme in the preference storage,
-                        // but don't use the database upgrade mechanism to update the values. So
-                        // we have to deal with the old format here.
-                        theme == android.R.style.Theme_Light) {
-                    return K9.Theme.LIGHT;
-                } else if (theme == K9.Theme.DARK.ordinal() || theme == android.R.style.Theme) {
-                    return K9.Theme.DARK;
+                for (K9.Theme t : K9.Theme.values()) {
+                    // We used to store the resource ID of the theme in the preference storage,
+                    // but don't use the database upgrade mechanism to update the values. So
+                    // we have to deal with the old format here.
+                    if (t.ordinal() == theme || theme == t.value) {
+                        return t;
+                    }
                 }
-            } catch (NumberFormatException e) { /* do nothing */ }
-
+            } catch (NumberFormatException e) {
+                // do nothing
+            }
             throw new InvalidSettingValueException();
         }
 
         @Override
         public Object fromPrettyString(String value) throws InvalidSettingValueException {
-            if (THEME_LIGHT.equals(value)) {
-                return K9.Theme.LIGHT;
-            } else if (THEME_DARK.equals(value)) {
-                return K9.Theme.DARK;
-            } else if (THEME_BLUE.equals(value)) {
-                return K9.Theme.BLUE;
-            } else if (THEME_BLUE_LIGHT.equals(value)) {
-                return Theme.BLUE_LIGHT;
-            } else if (THEME_RED.equals(value)) {
-                return Theme.RED;
-            } else if (THEME_DARK_GREY.equals(value)) {
-                return Theme.DARK_GREY;
-            } else if (THEME_GREEN.equals(value)) {
-                return Theme.GREEN;
-            } else if (THEME_YELLOW.equals(value)) {
-                return Theme.YELLOW;
-            } else if (THEME_ORANGE.equals(value)) {
-                return Theme.ORANGE;
-            } else if (THEME_CARDINAL_RED.equals(value)) {
-                return Theme.CARDINAL_RED;
-            } else if (THEME_PURPLE.equals(value)) {
-                return Theme.PURPLE;
+            for (K9.Theme t : K9.Theme.values()) {
+                if (t.name.equals(value)) {
+                    return t;
+                }
             }
-
             throw new InvalidSettingValueException();
         }
 
         @Override
         public String toPrettyString(Object value) {
-            switch ((K9.Theme) value) {
-                case DARK: {
-                    return THEME_DARK;
-                }
-                case BLUE: {
-                    return THEME_BLUE;
-                }
-                case BLUE_LIGHT: {
-                    return THEME_BLUE_LIGHT;
-                }
-                case RED: {
-                    return THEME_RED;
-                }
-                case DARK_GREY: {
-                    return THEME_DARK_GREY;
-                }
-                case GREEN: {
-                    return THEME_GREEN;
-                }
-                case YELLOW: {
-                    return THEME_YELLOW;
-                }
-                case ORANGE: {
-                    return THEME_ORANGE;
-                }
-                case CARDINAL_RED: {
-                    return THEME_CARDINAL_RED;
-                }
-                case PURPLE: {
-                    return THEME_PURPLE;
-                }
-                default: {
-                    return THEME_LIGHT;
+            for (K9.Theme t : K9.Theme.values()) {
+                if (t == value) {
+                    return t.name;
                 }
             }
+            return Theme.LIGHT.name;
         }
 
         @Override

@@ -1,14 +1,6 @@
 
 package com.fsck.k9;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.SynchronousQueue;
-
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
@@ -33,17 +25,24 @@ import com.fsck.k9.controller.MessagingListener;
 import com.fsck.k9.mail.Address;
 import com.fsck.k9.mail.K9MailLib;
 import com.fsck.k9.mail.Message;
-import com.fsck.k9.mail.MessagingException;
 import com.fsck.k9.mail.internet.BinaryTempFileBody;
+import com.fsck.k9.mail.ssl.LocalKeyStore;
 import com.fsck.k9.mailstore.LocalStore;
 import com.fsck.k9.preferences.Storage;
 import com.fsck.k9.preferences.StorageEditor;
 import com.fsck.k9.provider.UnreadWidgetProvider;
-import com.fsck.k9.mail.ssl.LocalKeyStore;
 import com.fsck.k9.service.BootReceiver;
 import com.fsck.k9.service.MailService;
 import com.fsck.k9.service.ShutdownReceiver;
 import com.fsck.k9.service.StorageGoneReceiver;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 
 public class K9 extends Application {
     /**
@@ -755,28 +754,11 @@ public class K9 extends Application {
         int themeValue = storage.getInt("theme", Theme.LIGHT.ordinal());
         // We used to save the resource ID of the theme. So convert that to the new format if
         // necessary.
-        if (themeValue == Theme.DARK.ordinal()) {
-            K9.setK9Theme(Theme.DARK);
-        } else if (themeValue == Theme.BLUE.ordinal()) {
-            K9.setK9Theme(Theme.BLUE);
-        } else if (themeValue == Theme.BLUE_LIGHT.ordinal()) {
-            K9.setK9Theme(Theme.BLUE_LIGHT);
-        } else if (themeValue == Theme.RED.ordinal()) {
-            K9.setK9Theme(Theme.RED);
-        } else if (themeValue == Theme.DARK_GREY.ordinal()) {
-            K9.setK9Theme(Theme.DARK_GREY);
-        } else if (themeValue == Theme.GREEN.ordinal()) {
-            K9.setK9Theme(Theme.GREEN);
-        } else if (themeValue == Theme.YELLOW.ordinal()) {
-            K9.setK9Theme(Theme.YELLOW);
-        } else if (themeValue == Theme.ORANGE.ordinal()) {
-            K9.setK9Theme(Theme.ORANGE);
-        } else if (themeValue == Theme.CARDINAL_RED.ordinal()) {
-            K9.setK9Theme(Theme.CARDINAL_RED);
-        } else if (themeValue == Theme.PURPLE.ordinal()) {
-            K9.setK9Theme(Theme.PURPLE);
-        } else {
-            K9.setK9Theme(Theme.LIGHT);
+        for (Theme t : Theme.values()) {
+            if (t.ordinal() == themeValue) {
+                K9.setK9Theme(t);
+                break;
+            }
         }
 
         themeValue = storage.getInt("messageViewTheme", Theme.USE_GLOBAL.ordinal());
@@ -841,56 +823,35 @@ public class K9 extends Application {
      * settings.</p>
      */
     public enum Theme {
-        LIGHT,
-        DARK,
-        BLUE,
-        BLUE_LIGHT,
-        RED,
-        DARK_GREY,
-        GREEN,
-        YELLOW,
-        ORANGE,
-        CARDINAL_RED,
-        PURPLE,
-        USE_GLOBAL
+        LIGHT(R.style.Theme_K9_Light, "light"),
+        DARK(R.style.Theme_K9_Dark, "dark"),
+        BLUE(R.style.Theme_K9_Blue, "blue"),
+        BLUE_LIGHT(R.style.Theme_K9_Blue_Light, "blue_light"),
+        RED(R.style.Theme_K9_Red, "red"),
+        DARK_GREY(R.style.Theme_K9_Dark_Grey, "dark_grey"),
+        GREEN(R.style.Theme_K9_Green, "green"),
+        YELLOW(R.style.Theme_K9_Yellow, "yellow"),
+        ORANGE(R.style.Theme_K9_Orange, "orange"),
+        CARDINAL_RED(R.style.Theme_K9_Cardinal_Red, "cardinal_red"),
+        PURPLE(R.style.Theme_K9_Purple, "purple"),
+        USE_GLOBAL(0, "");
+
+        final public int value;
+        final public String name;
+
+        Theme(int value, String name) {
+            this.value = value;
+            this.name = name;
+        }
     }
 
-    public static int getK9ThemeResourceId(Theme themeId) {
-       switch (themeId) {
-           case LIGHT: {
-               return R.style.Theme_K9_Light;
-           }
-           case BLUE: {
-               return R.style.Theme_K9_Blue;
-           }
-           case BLUE_LIGHT: {
-               return R.style.Theme_K9_Blue_Light;
-           }
-           case RED: {
-               return R.style.Theme_K9_Red;
-           }
-           case DARK_GREY: {
-               return R.style.Theme_K9_Dark_Grey;
-           }
-           case GREEN: {
-               return R.style.Theme_K9_Green;
-           }
-           case YELLOW: {
-               return R.style.Theme_K9_Yellow;
-           }
-           case ORANGE: {
-               return R.style.Theme_K9_Orange;
-           }
-           case CARDINAL_RED: {
-               return R.style.Theme_K9_Cardinal_Red;
-           }
-           case PURPLE: {
-               return R.style.Theme_K9_Purple;
-           }
-           default: {
-               return R.style.Theme_K9_Dark;
-           }
-       }
+    public static int getK9ThemeResourceId(Theme theme) {
+        for (Theme t : Theme.values()) {
+            if (t == theme) {
+                return t.value;
+            }
+        }
+        return Theme.LIGHT.value;
     }
 
     public static int getK9ThemeResourceId() {

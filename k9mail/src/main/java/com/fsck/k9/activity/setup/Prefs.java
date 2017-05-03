@@ -425,48 +425,16 @@ public class Prefs extends K9PreferenceActivity {
     }
 
     private static String themeIdToName(K9.Theme theme) {
-        switch (theme) {
-            case DARK: return "dark";
-            case BLUE: return "blue";
-            case BLUE_LIGHT: return "blue_light";
-            case RED: return "red";
-            case DARK_GREY: return "dark_grey";
-            case GREEN: return "green";
-            case YELLOW: return "yellow";
-            case ORANGE: return "orange";
-            case CARDINAL_RED: return "cardinal_red";
-            case PURPLE: return "purple";
-            case USE_GLOBAL: return "global";
-            default: return "light";
-        }
+        return theme.name;
     }
 
     private static K9.Theme themeNameToId(String theme) {
-        if (TextUtils.equals(theme, "dark")) {
-            return K9.Theme.DARK;
-        } else if (TextUtils.equals(theme, "blue")) {
-            return K9.Theme.BLUE;
-        } else if (TextUtils.equals(theme, "blue_light")) {
-            return K9.Theme.BLUE_LIGHT;
-        } else if (TextUtils.equals(theme, "red")) {
-            return K9.Theme.RED;
-        } else if (TextUtils.equals(theme, "dark_grey")) {
-            return K9.Theme.DARK_GREY;
-        } else if (TextUtils.equals(theme, "green")) {
-            return K9.Theme.GREEN;
-        } else if (TextUtils.equals(theme, "yellow")) {
-            return K9.Theme.YELLOW;
-        } else if (TextUtils.equals(theme, "orange")) {
-            return K9.Theme.ORANGE;
-        } else if (TextUtils.equals(theme, "cardinal_red")) {
-            return K9.Theme.CARDINAL_RED;
-        } else if (TextUtils.equals(theme, "purple")) {
-            return K9.Theme.PURPLE;
-        } else if (TextUtils.equals(theme, "global")) {
-            return K9.Theme.USE_GLOBAL;
-        } else {
-            return K9.Theme.LIGHT;
+        for (K9.Theme t : K9.Theme.values()) {
+            if (TextUtils.equals(theme, t.name)) {
+                return t;
+            }
         }
+        return K9.Theme.LIGHT;
     }
 
     private void saveSettings() {
