@@ -507,8 +507,6 @@ public class GlobalSettings {
      * The message view theme setting.
      */
     public static class SubThemeSetting extends ThemeSetting {
-        private static final String THEME_USE_GLOBAL = "use_global";
-
         public SubThemeSetting(Theme defaultValue) {
             super(defaultValue);
         }
@@ -529,7 +527,7 @@ public class GlobalSettings {
 
         @Override
         public Object fromPrettyString(String value) throws InvalidSettingValueException {
-            if (THEME_USE_GLOBAL.equals(value)) {
+            if (Theme.USE_GLOBAL.name.equals(value)) {
                 return K9.Theme.USE_GLOBAL;
             }
 
@@ -539,7 +537,7 @@ public class GlobalSettings {
         @Override
         public String toPrettyString(Object value) {
             if (((K9.Theme) value) == K9.Theme.USE_GLOBAL) {
-                return THEME_USE_GLOBAL;
+                return ((Theme) value).name;
             }
 
             return super.toPrettyString(value);

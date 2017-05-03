@@ -834,7 +834,7 @@ public class K9 extends Application {
         ORANGE(R.style.Theme_K9_Orange, "orange"),
         CARDINAL_RED(R.style.Theme_K9_Cardinal_Red, "cardinal_red"),
         PURPLE(R.style.Theme_K9_Purple, "purple"),
-        USE_GLOBAL(0, "");
+        USE_GLOBAL(0, "global");
 
         final public int value;
         final public String name;
