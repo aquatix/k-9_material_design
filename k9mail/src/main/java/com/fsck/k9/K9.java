@@ -754,8 +754,10 @@ public class K9 extends Application {
         int themeValue = storage.getInt("theme", Theme.LIGHT.ordinal());
         // We used to save the resource ID of the theme. So convert that to the new format if
         // necessary.
+
+        //TODO: Add possibility to set dark or light theme and color seperatly
         for (Theme t : Theme.values()) {
-            if (t.ordinal() == themeValue) {
+            if (t.ordinal() == themeValue || themeValue == t.value) {
                 K9.setK9Theme(t);
                 break;
             }
