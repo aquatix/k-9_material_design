@@ -23,24 +23,14 @@
   can be displayed after the device has been rotated.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceScreen
         android:title="@string/display_preferences"
         android:key="display_preferences">
 
-        <PreferenceCategory
-            android:title="@string/global_preferences"
-            android:key="global_preferences">
-
-            <ListPreference
-                android:persistent="false"
-                android:key="language"
-                android:title="@string/settings_language_label"
-                android:entries="@array/settings_language_entries"
-                android:entryValues="@array/settings_language_values"
-                android:dialogTitle="@string/settings_language_label" />
-
+        <PreferenceCategory android:title="@string/settings_theme_label" >
             <ListPreference
                 android:persistent="false"
                 android:key="theme"
@@ -48,6 +38,14 @@
                 android:entries="@array/settings_theme_entries"
                 android:entryValues="@array/settings_theme_values"
                 android:dialogTitle="@string/settings_theme_label" />
+
+            <com.fsck.k9.preferences.color_preference.ColorPickerPreference
+                android:key="theme_color"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/settings_theme_color_label"
+                app:cal_itemLayout="@layout/preference_grid_item_color"
+                app:cal_numColumns="4" />
 
             <CheckBoxPreference
                 android:persistent="false"
@@ -72,6 +70,19 @@
                 android:entries="@array/settings_message_theme_entries"
                 android:entryValues="@array/settings_message_theme_values"
                 android:dialogTitle="@string/settings_compose_theme_label" />
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="@string/global_preferences"
+            android:key="global_preferences">
+
+            <ListPreference
+                android:persistent="false"
+                android:key="language"
+                android:title="@string/settings_language_label"
+                android:entries="@array/settings_language_entries"
+                android:entryValues="@array/settings_language_values"
+                android:dialogTitle="@string/settings_language_label" />
 
             <Preference
                 android:persistent="false"

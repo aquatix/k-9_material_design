@@ -6,6 +6,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 
 import com.fsck.k9.K9;
+import com.fsck.k9.preferences.color_preference.ColorPickerPreference;
 
 
 public class K9PreferenceActivity extends PreferenceActivity {
@@ -32,6 +33,12 @@ public class K9PreferenceActivity extends PreferenceActivity {
         prefView.setSummary(prefView.getEntry());
         prefView.setOnPreferenceChangeListener(new PreferenceChangeListener(prefView));
         return prefView;
+    }
+
+    protected ColorPickerPreference setupColorListPreference(final String key) {
+        final ColorPickerPreference colorPrefView = (ColorPickerPreference) findPreference(key);
+        colorPrefView.setSummary(Integer.toString(colorPrefView.getValue()));
+        return colorPrefView;
     }
 
     /**

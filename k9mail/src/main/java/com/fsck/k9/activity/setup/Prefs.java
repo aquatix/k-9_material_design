@@ -10,6 +10,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.fsck.k9.K9;
@@ -27,6 +28,7 @@ import com.fsck.k9.preferences.CheckBoxListPreference;
 import com.fsck.k9.preferences.Storage;
 import com.fsck.k9.preferences.StorageEditor;
 import com.fsck.k9.preferences.TimePickerPreference;
+import com.fsck.k9.preferences.color_preference.ColorPickerPreference;
 import com.fsck.k9.service.MailService;
 
 import java.io.File;
@@ -49,6 +51,7 @@ public class Prefs extends K9PreferenceActivity {
      */
     private static final String PREFERENCE_LANGUAGE = "language";
     private static final String PREFERENCE_THEME = "theme";
+    private static final String PREFERENCE_THEME_COLOR = "theme_color";
     private static final String PREFERENCE_MESSAGE_VIEW_THEME = "messageViewTheme";
     private static final String PREFERENCE_FIXED_MESSAGE_THEME = "fixedMessageViewTheme";
     private static final String PREFERENCE_COMPOSER_THEME = "messageComposeTheme";
@@ -109,6 +112,7 @@ public class Prefs extends K9PreferenceActivity {
 
     private ListPreference mLanguage;
     private ListPreference mTheme;
+    private ColorPickerPreference mThemeColor;
     private CheckBoxPreference mFixedMessageTheme;
     private ListPreference mMessageTheme;
     private ListPreference mComposerTheme;
@@ -182,6 +186,7 @@ public class Prefs extends K9PreferenceActivity {
                            entryValueVector.toArray(EMPTY_CHAR_SEQUENCE_ARRAY));
 
         mTheme = setupListPreference(PREFERENCE_THEME, themeIdToName(K9.getK9Theme()));
+        mThemeColor = setupColorListPreference(PREFERENCE_THEME_COLOR);
         mFixedMessageTheme = (CheckBoxPreference) findPreference(PREFERENCE_FIXED_MESSAGE_THEME);
         mFixedMessageTheme.setChecked(K9.useFixedMessageViewTheme());
         mMessageTheme = setupListPreference(PREFERENCE_MESSAGE_VIEW_THEME,
@@ -443,6 +448,7 @@ public class Prefs extends K9PreferenceActivity {
         K9.setK9Language(mLanguage.getValue());
 
         K9.setK9Theme(themeNameToId(mTheme.getValue()));
+        Log.w("DEBUGGING",mThemeColor.getValue() +" color value");
         K9.setUseFixedMessageViewTheme(mFixedMessageTheme.isChecked());
         K9.setK9MessageViewThemeSetting(themeNameToId(mMessageTheme.getValue()));
         K9.setK9ComposerThemeSetting(themeNameToId(mComposerTheme.getValue()));

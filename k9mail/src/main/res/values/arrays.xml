@@ -533,6 +533,14 @@
     <string-array name="settings_theme_entries">
         <item>@string/setting_theme_light</item>
         <item>@string/setting_theme_dark</item>
+    </string-array>
+
+    <string-array name="settings_theme_values" translatable="false">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+
+    <string-array name="settings_theme_color_entries">
         <item>@string/setting_theme_blue</item>
         <item>@string/setting_theme_blue_light</item>
         <item>@string/setting_theme_red</item>
@@ -544,9 +552,7 @@
         <item>@string/setting_theme_cardinal_red</item>
     </string-array>
 
-    <string-array name="settings_theme_values" translatable="false">
-        <item>light</item>
-        <item>dark</item>
+    <string-array name="settings_theme_color_values" translatable="false">
         <item>blue</item>
         <item>blue_light</item>
         <item>red</item>
@@ -561,30 +567,12 @@
     <string-array name="settings_message_theme_entries">
         <item>@string/setting_theme_light</item>
         <item>@string/setting_theme_dark</item>
-        <item>@string/setting_theme_blue</item>
-        <item>@string/setting_theme_blue_light</item>
-        <item>@string/setting_theme_red</item>
-        <item>@string/setting_theme_green</item>
-        <item>@string/setting_theme_yellow</item>
-        <item>@string/setting_theme_orange</item>
-        <item>@string/setting_theme_purple</item>
-        <item>@string/setting_theme_dark_grey</item>
-        <item>@string/setting_theme_cardinal_red</item>
         <item>@string/setting_theme_global</item>
     </string-array>
 
     <string-array name="settings_message_theme_values" translatable="false">
         <item>light</item>
         <item>dark</item>
-        <item>blue</item>
-        <item>blue_light</item>
-        <item>red</item>
-        <item>green</item>
-        <item>yellow</item>
-        <item>orange</item>
-        <item>purple</item>
-        <item>dark_grey</item>
-        <item>cardinal_red</item>
         <item>global</item>
     </string-array>
 

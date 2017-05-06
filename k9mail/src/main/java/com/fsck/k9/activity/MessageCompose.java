@@ -1116,6 +1116,8 @@ public class MessageCompose extends K9Activity implements OnClickListener,
                 })
                 .create();
             case DIALOG_CHOOSE_IDENTITY:
+
+                //TODO: refactor to fit for other themes
                 Context context = new ContextThemeWrapper(this,
                         (K9.getK9Theme() == K9.Theme.LIGHT) ?
                         R.style.Theme_K9_Dialog_Light :

@@ -72,7 +72,7 @@
     <declare-styleable name="SliderPreference">
         <attr name="android:summary" />
     </declare-styleable>
-    
+
     <declare-styleable name="FoldableLinearLayout">
         <attr name="foldedLabel" format="string" />
         <attr name="unFoldedLabel" format="string" />
@@ -87,6 +87,13 @@
 
     <declare-styleable name="ToolableViewAnimator">
         <attr name="previewInitialChild" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ColorPickerPreference">
+        <attr name="cal_itemLayout" format="reference"/>
+        <attr name="cal_choices" format="reference"/>
+        <attr name="cal_numColumns" format="integer"/>
     </declare-styleable>
 
 
