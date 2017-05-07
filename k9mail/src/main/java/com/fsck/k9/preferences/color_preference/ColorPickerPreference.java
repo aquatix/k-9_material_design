@@ -29,29 +29,32 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fsck.k9.K9.Theme;
 import com.fsck.k9.R;
 import com.fsck.k9.helper.Utility;
 
 /**
  * ColorPreference based on ColorPickerDialog of Stock Calendar
- * 
- * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  *
+ * @author Gabriele Mariotti (gabri.mariotti@gmail.com)
  */
-public class ColorPickerPreference extends Preference{
-	
-	private int[] mColorChoices = {};
+public class ColorPickerPreference extends Preference {
+
+    private int[] mColorChoices = {};
+    private String[][] mColorNames = {};
+    private String[] colorNameValues = {};
+    private String[] colorNameEntries = {};
     private int mValue = 0;
     private int mItemLayoutId = R.layout.preference_grid_item_color;
     private int mNumColumns = 5;
     private View mPreviewView;
 
-	public ColorPickerPreference(Context context) {
-		super(context);
-		initAttrs(null, 0);
-	}
-	
-	public ColorPickerPreference(Context context, AttributeSet attrs) {
+    public ColorPickerPreference(Context context) {
+        super(context);
+        initAttrs(null, 0);
+    }
+
+    public ColorPickerPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(attrs, 0);
     }
@@ -60,10 +63,13 @@ public class ColorPickerPreference extends Preference{
         super(context, attrs, defStyle);
         initAttrs(attrs, defStyle);
     }
-	
+
     private void initAttrs(AttributeSet attrs, int defStyle) {
-    	TypedArray a = getContext().getTheme().obtainStyledAttributes(
+        TypedArray a = getContext().getTheme().obtainStyledAttributes(
                 attrs, R.styleable.ColorPickerPreference, defStyle, defStyle);
+
+        colorNameValues = getContext().getResources().getStringArray(R.array.settings_theme_color_values);
+        colorNameEntries = getContext().getResources().getStringArray(R.array.settings_theme_color_entries);
 
         try {
             mItemLayoutId = a.getResourceId(R.styleable.ColorPickerPreference_cal_itemLayout, mItemLayoutId);
@@ -73,8 +79,11 @@ public class ColorPickerPreference extends Preference{
             if (choicesResId > 0) {
                 String[] choices = a.getResources().getStringArray(choicesResId);
                 mColorChoices = new int[choices.length];
+                mColorNames = new String[choices.length][2];
                 for (int i = 0; i < choices.length; i++) {
                     mColorChoices[i] = Color.parseColor(choices[i]);
+                    mColorNames[i][0] = getThemeColorName(Theme.values()[i].name);
+                    mColorNames[i][1] = Theme.values()[i].name;
                 }
             }
 
@@ -83,7 +92,7 @@ public class ColorPickerPreference extends Preference{
         }
         setWidgetLayoutResource(mItemLayoutId);
     }
-    
+
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);
@@ -103,42 +112,42 @@ public class ColorPickerPreference extends Preference{
     protected void onClick() {
         super.onClick();
 
-        ColorPickerDialog colorcalendar = (ColorPickerDialog) ColorPickerDialog.newInstance(R.string.color_picker_default_title,
-				mColorChoices, getValue(), mNumColumns, Utility.isTablet(getContext())? ColorPickerDialog.SIZE_LARGE :
+        ColorPickerDialog colordialog = ColorPickerDialog.newInstance(R.string.color_picker_default_title,
+                mColorChoices, getValue(), mNumColumns, Utility.isTablet(getContext()) ? ColorPickerDialog.SIZE_LARGE :
                         ColorPickerDialog.SIZE_SMALL);
-        
-        //colorcalendar.setPreference(this);
 
         Activity activity = (Activity) getContext();
         activity.getFragmentManager().beginTransaction()
-                .add(colorcalendar, getFragmentTag())
+                .add(colordialog, getFragmentTag())
                 .commit();
-        
-       colorcalendar.setOnColorSelectedListener(listener);
+
+        colordialog.setOnColorSelectedListener(listener);
     }
-    
+
     /**
      * Implement listener to get selected color value
      */
     ColorPickerSwatch.OnColorSelectedListener listener = new ColorPickerSwatch.OnColorSelectedListener() {
-		
-		@Override
-		public void onColorSelected(int color) {
-			setValue(color);
-		}
-	};
-    
+
+        @Override
+        public void onColorSelected(int color) {
+            setValue(color);
+            setSummary(getColorSummaryName());
+        }
+    };
+
     @Override
     protected void onAttachedToActivity() {
         super.onAttachedToActivity();
 
         Activity activity = (Activity) getContext();
-        ColorPickerDialog colorcalendar = (ColorPickerDialog) activity
+        ColorPickerDialog colordialog = (ColorPickerDialog) activity
                 .getFragmentManager().findFragmentByTag(getFragmentTag());
-        if (colorcalendar != null) {
+        if (colordialog != null) {
             // re-bind listener to fragment
-            colorcalendar.setOnColorSelectedListener(listener);
+            colordialog.setOnColorSelectedListener(listener);
         }
+        setSummary(getColorSummaryName());
     }
 
     @Override
@@ -151,14 +160,17 @@ public class ColorPickerPreference extends Preference{
         setValue(restoreValue ? getPersistedInt(0) : (Integer) defaultValue);
     }
 
-    public String getFragmentTag() {
-        return "color_" + getKey();
+    private String getThemeColorName(String colorName) {
+        if (colorNameValues.length == colorNameEntries.length) {
+            for (int i = 0; i < colorNameValues.length; i++) {
+                if (colorNameValues[i].equals(colorName)) {
+                    return colorNameEntries[i];
+                }
+            }
+        }
+        return colorName;
     }
 
-    public int getValue() {
-        return mValue;
-    }
-    
     private static void setColorViewValue(View view, int color) {
         if (view instanceof ImageView) {
             ImageView imageView = (ImageView) view;
@@ -189,6 +201,36 @@ public class ColorPickerPreference extends Preference{
             ((TextView) view).setTextColor(color);
         }
     }
-    
-    
+
+    public String getFragmentTag() {
+        return "color_" + getKey();
+    }
+
+    public int getValue() {
+        return mValue;
+    }
+
+    /**
+     * Returns the name from strings.xml
+     */
+    public String getColorSummaryName() {
+        for (int i = 0; i < mColorChoices.length; i++) {
+            if (mValue == mColorChoices[i]) {
+                return mColorNames[i][0];
+            }
+        }
+        return "";
+    }
+
+    /**
+     * Returns the internal name from K9.Theme
+     */
+    public String getColorName() {
+        for (int i = 0; i < mColorChoices.length; i++) {
+            if (mValue == mColorChoices[i]) {
+                return mColorNames[i][1];
+            }
+        }
+        return "";
+    }
 }

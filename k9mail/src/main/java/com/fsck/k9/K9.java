@@ -827,6 +827,7 @@ public class K9 extends Application {
     public enum Theme {
         LIGHT(R.style.Theme_K9_Light, "light"),
         DARK(R.style.Theme_K9_Dark, "dark"),
+        USE_GLOBAL(0, "global"),
         BLUE(R.style.Theme_K9_Blue, "blue"),
         BLUE_LIGHT(R.style.Theme_K9_Blue_Light, "blue_light"),
         RED(R.style.Theme_K9_Red, "red"),
@@ -835,8 +836,7 @@ public class K9 extends Application {
         YELLOW(R.style.Theme_K9_Yellow, "yellow"),
         ORANGE(R.style.Theme_K9_Orange, "orange"),
         CARDINAL_RED(R.style.Theme_K9_Cardinal_Red, "cardinal_red"),
-        PURPLE(R.style.Theme_K9_Purple, "purple"),
-        USE_GLOBAL(0, "global");
+        PURPLE(R.style.Theme_K9_Purple, "purple");
 
         final public int value;
         final public String name;

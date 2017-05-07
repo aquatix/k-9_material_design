@@ -37,7 +37,6 @@ public class K9PreferenceActivity extends PreferenceActivity {
 
     protected ColorPickerPreference setupColorListPreference(final String key) {
         final ColorPickerPreference colorPrefView = (ColorPickerPreference) findPreference(key);
-        colorPrefView.setSummary(Integer.toString(colorPrefView.getValue()));
         return colorPrefView;
     }
 

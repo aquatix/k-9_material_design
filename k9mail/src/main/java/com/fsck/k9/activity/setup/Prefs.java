@@ -448,7 +448,8 @@ public class Prefs extends K9PreferenceActivity {
         K9.setK9Language(mLanguage.getValue());
 
         K9.setK9Theme(themeNameToId(mTheme.getValue()));
-        Log.w("DEBUGGING",mThemeColor.getValue() +" color value");
+        Log.w("DEBUGGING",mThemeColor.getColorSummaryName() +" color summary");
+        Log.w("DEBUGGING",mThemeColor.getColorName() +" color name");
         K9.setUseFixedMessageViewTheme(mFixedMessageTheme.isChecked());
         K9.setK9MessageViewThemeSetting(themeNameToId(mMessageTheme.getValue()));
         K9.setK9ComposerThemeSetting(themeNameToId(mComposerTheme.getValue()));
