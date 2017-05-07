@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
@@ -163,6 +165,8 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
     private TextView mActionBarUnread;
     private Menu mMenu;
 
+    private FloatingActionButton fab;
+
     private ViewGroup mMessageViewContainer;
     private View mMessageViewPlaceHolder;
 
@@ -229,6 +233,14 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
         if (!decodeExtras(getIntent())) {
             return;
         }
+
+        fab = (FloatingActionButton) mViewSwitcher.findViewById(R.id.fab);
+        fab.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMessageListFragment.onCompose();
+            }
+        });
 
         findFragments();
         initializeDisplayMode(savedInstanceState);
