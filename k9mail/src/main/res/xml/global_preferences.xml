@@ -30,7 +30,8 @@
         android:title="@string/display_preferences"
         android:key="display_preferences">
 
-        <PreferenceCategory android:title="@string/settings_theme_label" >
+        <PreferenceCategory android:title="@string/settings_theme_label"
+                            android:key="display_category">
             <ListPreference
                 android:persistent="false"
                 android:key="theme"
@@ -46,6 +47,12 @@
                 android:title="@string/settings_theme_color_label"
                 app:cal_itemLayout="@layout/preference_grid_item_color"
                 app:cal_numColumns="4" />
+
+            <CheckBoxPreference
+                android:persistent="false"
+                android:key="theme_dark"
+                android:title="Dark Theme"
+                android:summary="Use dark app theme" />
 
             <CheckBoxPreference
                 android:persistent="false"

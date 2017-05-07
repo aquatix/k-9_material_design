@@ -8,6 +8,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.util.Log;
@@ -51,6 +52,7 @@ public class Prefs extends K9PreferenceActivity {
      */
     private static final String PREFERENCE_LANGUAGE = "language";
     private static final String PREFERENCE_THEME = "theme";
+    private static final String PREFERENCE_THEME_DARK = "theme_dark";
     private static final String PREFERENCE_THEME_COLOR = "theme_color";
     private static final String PREFERENCE_MESSAGE_VIEW_THEME = "messageViewTheme";
     private static final String PREFERENCE_FIXED_MESSAGE_THEME = "fixedMessageViewTheme";
@@ -112,6 +114,7 @@ public class Prefs extends K9PreferenceActivity {
 
     private ListPreference mLanguage;
     private ListPreference mTheme;
+    private CheckBoxPreference mDarkTheme;
     private ColorPickerPreference mThemeColor;
     private CheckBoxPreference mFixedMessageTheme;
     private ListPreference mMessageTheme;
@@ -186,7 +189,22 @@ public class Prefs extends K9PreferenceActivity {
                            entryValueVector.toArray(EMPTY_CHAR_SEQUENCE_ARRAY));
 
         mTheme = setupListPreference(PREFERENCE_THEME, themeIdToName(K9.getK9Theme()));
+        PreferenceCategory mThemeCategory = (PreferenceCategory) findPreference("display_category");
+        mThemeCategory.removePreference(mTheme);
+
+        mDarkTheme = (CheckBoxPreference) findPreference(PREFERENCE_THEME_DARK);
+        mDarkTheme.setChecked(K9.useDarkTheme());
+        mDarkTheme.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Toast.makeText(getApplicationContext(), R.string.preference_change_tost, Toast
+                        .LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
         mThemeColor = setupColorListPreference(PREFERENCE_THEME_COLOR);
+
         mFixedMessageTheme = (CheckBoxPreference) findPreference(PREFERENCE_FIXED_MESSAGE_THEME);
         mFixedMessageTheme.setChecked(K9.useFixedMessageViewTheme());
         mMessageTheme = setupListPreference(PREFERENCE_MESSAGE_VIEW_THEME,
@@ -450,6 +468,7 @@ public class Prefs extends K9PreferenceActivity {
         K9.setK9Theme(themeNameToId(mTheme.getValue()));
         Log.w("DEBUGGING",mThemeColor.getColorSummaryName() +" color summary");
         Log.w("DEBUGGING",mThemeColor.getColorName() +" color name");
+        K9.setUseDarkTheme(mDarkTheme.isChecked());
         K9.setUseFixedMessageViewTheme(mFixedMessageTheme.isChecked());
         K9.setK9MessageViewThemeSetting(themeNameToId(mMessageTheme.getValue()));
         K9.setK9ComposerThemeSetting(themeNameToId(mComposerTheme.getValue()));

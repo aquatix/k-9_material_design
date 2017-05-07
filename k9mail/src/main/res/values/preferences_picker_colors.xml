@@ -3,16 +3,18 @@
     <!--These values need to have the same order as the items in com.fsck.k9.K9.Theme-->
 
     <string-array name="default_color_choice_values" translatable="false">
-        <item>#33b5e5</item>
-        <item>#aa66cc</item>
-        <item>#99cc00</item>
-        <item>#ffbb33</item>
-        <item>#ff4444</item>
-        <item>#0099cc</item>
-        <item>#9933cc</item>
-        <item>#669900</item>
-        <item>#ff8800</item>
-        <item>#cc0000</item>
+        <item>#607D8B</item>
+        <item>#DB4437</item>
+        <item>#2A56C6</item>
+        <item>#039BE5</item>
+        <item>#009688</item>
+        <item>#455A64</item>
+        <item>#0F9D58</item>
+        <item>#FFBB00</item>
+        <item>#FF5722</item>
+        <item>#795548</item>
+        <item>#E91E63</item>
+        <item>#9C27B0</item>
     </string-array>
 
 

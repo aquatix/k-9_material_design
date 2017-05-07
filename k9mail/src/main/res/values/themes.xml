@@ -193,12 +193,6 @@
         <item name="colorPrimary">@color/colorPrimary_Orange</item>
     </style>
 
-    <style name="Theme.K9.Cardinal_Red" parent="Theme.K9.Light.Common">
-        <item name="colorAccent">@color/colorAccent_Cardinal_Red</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark_Cardinal_Red</item>
-        <item name="colorPrimary">@color/colorPrimary_Cardinal_Red</item>
-    </style>
-
     <style name="Theme.K9.Purple" parent="Theme.K9.Light.Common">
         <item name="colorAccent">@color/colorAccent_Purple</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_Purple</item>

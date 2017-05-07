@@ -541,27 +541,33 @@
     </string-array>
 
     <string-array name="settings_theme_color_entries">
+        <item>@string/setting_theme_blue_grey</item>
+        <item>@string/setting_theme_red</item>
         <item>@string/setting_theme_blue</item>
         <item>@string/setting_theme_blue_light</item>
-        <item>@string/setting_theme_red</item>
+        <item>@string/setting_theme_teal</item>
+        <item>@string/setting_theme_dark_grey</item>
         <item>@string/setting_theme_green</item>
         <item>@string/setting_theme_yellow</item>
         <item>@string/setting_theme_orange</item>
+        <item>@string/setting_theme_brown</item>
+        <item>@string/setting_theme_pink</item>
         <item>@string/setting_theme_purple</item>
-        <item>@string/setting_theme_dark_grey</item>
-        <item>@string/setting_theme_cardinal_red</item>
     </string-array>
 
     <string-array name="settings_theme_color_values" translatable="false">
+        <item>blue_grey</item>
+        <item>red</item>
         <item>blue</item>
         <item>blue_light</item>
-        <item>red</item>
+        <item>teal</item>
+        <item>dark_grey</item>
         <item>green</item>
         <item>yellow</item>
         <item>orange</item>
+        <item>brown</item>
+        <item>pink</item>
         <item>purple</item>
-        <item>dark_grey</item>
-        <item>cardinal_red</item>
     </string-array>
 
     <string-array name="settings_message_theme_entries">

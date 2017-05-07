@@ -28,8 +28,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.fsck.k9.K9.Theme;
+import com.fsck.k9.K9.ColorTheme;
 import com.fsck.k9.R;
 import com.fsck.k9.helper.Utility;
 
@@ -82,8 +83,8 @@ public class ColorPickerPreference extends Preference {
                 mColorNames = new String[choices.length][2];
                 for (int i = 0; i < choices.length; i++) {
                     mColorChoices[i] = Color.parseColor(choices[i]);
-                    mColorNames[i][0] = getThemeColorName(Theme.values()[i].name);
-                    mColorNames[i][1] = Theme.values()[i].name;
+                    mColorNames[i][0] = getThemeColorName(ColorTheme.values()[i].name);
+                    mColorNames[i][1] = ColorTheme.values()[i].name;
                 }
             }
 
@@ -133,6 +134,8 @@ public class ColorPickerPreference extends Preference {
         public void onColorSelected(int color) {
             setValue(color);
             setSummary(getColorSummaryName());
+            Toast.makeText(getContext(), R.string.preference_change_tost, Toast
+                    .LENGTH_SHORT).show();
         }
     };
 

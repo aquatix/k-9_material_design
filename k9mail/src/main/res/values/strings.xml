@@ -800,14 +800,17 @@ Please submit bug reports, contribute new features and ask questions at
     <string name="setting_theme_global">Use app theme</string>
     <string name="setting_theme_dark">Dark</string>
     <string name="setting_theme_light">Light</string>
+    <string name="setting_theme_blue_grey">Blue Grey</string>
+    <string name="setting_theme_red">Red</string>
     <string name="setting_theme_blue">Blue</string>
     <string name="setting_theme_blue_light">Light Blue</string>
-    <string name="setting_theme_red">Red</string>
+    <string name="setting_theme_teal">Teal</string>
     <string name="setting_theme_dark_grey">Dark Grey</string>
     <string name="setting_theme_green">Green</string>
     <string name="setting_theme_yellow">Yellow</string>
     <string name="setting_theme_orange">Orange</string>
-    <string name="setting_theme_cardinal_red">Cardinal red</string>
+    <string name="setting_theme_brown">Brown</string>
+    <string name="setting_theme_pink">Pink</string>
     <string name="setting_theme_purple">Purple</string>
     <string name="display_preferences">Display</string>
     <string name="global_preferences">Global</string>
@@ -1257,5 +1260,6 @@ Please submit bug reports, contribute new features and ask questions at
     <string name="color_swatch_description">Color <xliff:g id="color_index" example="14">%1$d</xliff:g></string>
     <string name="color_swatch_description_selected">Color <xliff:g id="color_index" example="14">%1$d</xliff:g> selected</string>
     <string name="pref_config">Color Picker</string>
+    <string name="preference_change_tost">Changes will take effect after restarting the app.</string>
 
 </resources>

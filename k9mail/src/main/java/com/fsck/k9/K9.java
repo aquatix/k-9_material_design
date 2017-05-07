@@ -109,6 +109,7 @@ public class K9 extends Application {
     private static Theme messageViewTheme = Theme.USE_GLOBAL;
     private static Theme composerTheme = Theme.USE_GLOBAL;
     private static boolean useFixedMessageTheme = true;
+    private static boolean useDarkTheme = false;
 
     private static final FontSizes fontSizes = new FontSizes();
 
@@ -466,6 +467,7 @@ public class K9 extends Application {
 
         editor.putString("language", language);
         editor.putInt("theme", theme.ordinal());
+        editor.putBoolean("darkTheme", useDarkTheme);
         editor.putInt("messageViewTheme", messageViewTheme.ordinal());
         editor.putInt("messageComposeTheme", composerTheme.ordinal());
         editor.putBoolean("fixedMessageViewTheme", useFixedMessageTheme);
@@ -835,13 +837,36 @@ public class K9 extends Application {
         GREEN(R.style.Theme_K9_Green, "green"),
         YELLOW(R.style.Theme_K9_Yellow, "yellow"),
         ORANGE(R.style.Theme_K9_Orange, "orange"),
-        CARDINAL_RED(R.style.Theme_K9_Cardinal_Red, "cardinal_red"),
+        CARDINAL_RED(0, "cardinal_red"),
         PURPLE(R.style.Theme_K9_Purple, "purple");
 
         final public int value;
         final public String name;
 
         Theme(int value, String name) {
+            this.value = value;
+            this.name = name;
+        }
+    }
+
+    public enum ColorTheme {
+        BLUE_GREY(0,"blue_grey"),
+        RED(R.style.Theme_K9_Red, "red"),
+        BLUE(R.style.Theme_K9_Blue, "blue"),
+        BLUE_LIGHT(R.style.Theme_K9_Blue_Light, "blue_light"),
+        TEAL(0, "teal"),
+        DARK_GREY(R.style.Theme_K9_Dark_Grey, "dark_grey"),
+        GREEN(R.style.Theme_K9_Green, "green"),
+        YELLOW(R.style.Theme_K9_Yellow, "yellow"),
+        ORANGE(R.style.Theme_K9_Orange, "orange"),
+        BROWN(0, "brown"),
+        PINK(0, "pink"),
+        PURPLE(R.style.Theme_K9_Purple, "purple");
+
+        final public int value;
+        final public String name;
+
+        ColorTheme(int value, String name) {
             this.value = value;
             this.name = name;
         }
@@ -890,12 +915,20 @@ public class K9 extends Application {
         messageViewTheme = nMessageViewTheme;
     }
 
+    public static boolean useDarkTheme() {
+        return useDarkTheme;
+    }
+
     public static boolean useFixedMessageViewTheme() {
         return useFixedMessageTheme;
     }
 
     public static void setK9ComposerThemeSetting(Theme compTheme) {
         composerTheme = compTheme;
+    }
+
+    public static void setUseDarkTheme(boolean useDark) {
+        useDarkTheme = useDark;
     }
 
     public static void setUseFixedMessageViewTheme(boolean useFixed) {
