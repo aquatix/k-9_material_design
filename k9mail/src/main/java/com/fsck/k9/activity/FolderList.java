@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -99,6 +100,7 @@ public class FolderList extends K9ListActivity {
     private TextView mActionBarTitle;
     private TextView mActionBarSubTitle;
     private TextView mActionBarUnread;
+    private SearchView folderSearchView;
 
     class FolderListHandler extends Handler {
 
@@ -517,6 +519,14 @@ public class FolderList extends K9ListActivity {
 
             return true;
 
+        case R.id.filter_folders:
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+            folderSearchView.setVisibility(View.VISIBLE);
+            folderSearchView.requestFocus();
+
+            return true;
+
         case R.id.compose:
             MessageActions.actionCompose(this, mAccount);
 
@@ -608,7 +618,9 @@ public class FolderList extends K9ListActivity {
 
     private void configureFolderSearchView(Menu menu) {
         final MenuItem folderMenuItem = menu.findItem(R.id.filter_folders);
-        final SearchView folderSearchView = (SearchView) folderMenuItem.getActionView();
+        folderSearchView = (SearchView) findViewById(R.id.searchView);
+        folderSearchView.setIconifiedByDefault(false);
+        folderSearchView.setVisibility(View.GONE);
         folderSearchView.setQueryHint(getString(R.string.folder_list_filter_hint));
         folderSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -631,6 +643,7 @@ public class FolderList extends K9ListActivity {
             @Override
             public boolean onClose() {
                 mActionBarTitle.setText(getString(R.string.folders_title));
+                folderSearchView.setVisibility(View.GONE);
                 return false;
             }
         });

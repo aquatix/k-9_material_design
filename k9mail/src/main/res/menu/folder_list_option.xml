@@ -9,7 +9,7 @@
     <item
         android:id="@+id/filter_folders"
         android:icon="?attr/iconActionSearchFolder"
-        app:showAsAction="always|collapseActionView"
+        app:showAsAction="never"
         android:title="@string/filter_folders_action"
         app:actionViewClass="android.widget.SearchView"/>
     <item

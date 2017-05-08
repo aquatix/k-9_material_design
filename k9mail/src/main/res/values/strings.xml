@@ -1260,6 +1260,6 @@ Please submit bug reports, contribute new features and ask questions at
     <string name="color_swatch_description">Color <xliff:g id="color_index" example="14">%1$d</xliff:g></string>
     <string name="color_swatch_description_selected">Color <xliff:g id="color_index" example="14">%1$d</xliff:g> selected</string>
     <string name="pref_config">Color Picker</string>
-    <string name="preference_change_tost">Changes will take effect after restarting the app.</string>
+    <string name="preference_change_tost">Changes will take effect on next start.</string>
 
 </resources>
