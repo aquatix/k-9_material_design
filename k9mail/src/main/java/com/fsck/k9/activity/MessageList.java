@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -869,10 +870,6 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
                 onEditAccount();
                 return true;
             }
-            case R.id.search: {
-                mMessageListFragment.onSearchRequested();
-                return true;
-            }
             case R.id.search_remote: {
                 mMessageListFragment.onRemoteSearch();
                 return true;
@@ -982,7 +979,26 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
         getMenuInflater().inflate(R.menu.message_list_option, menu);
         mMenu = menu;
         mMenuButtonCheckMail= menu.findItem(R.id.check_mail);
+        configureSearchView(menu);
         return true;
+    }
+
+    private void configureSearchView(Menu menu) {
+        final MenuItem searchMenuItem = menu.findItem(R.id.search);
+        final SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                triggerSearch(query, null);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
     }
 
     @Override

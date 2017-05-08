@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -1238,9 +1239,6 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         case R.id.about:
             onAbout();
             break;
-        case R.id.search:
-            onSearchRequested();
-            break;
         case R.id.export_all:
             onExport(true, null);
             break;
@@ -1354,7 +1352,26 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.accounts_option, menu);
         mRefreshMenuItem = menu.findItem(R.id.check_mail);
+        configureSearchView(menu);
         return true;
+    }
+
+    private void configureSearchView(Menu menu) {
+        final MenuItem searchMenuItem = menu.findItem(R.id.search);
+        final SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                triggerSearch(query, null);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
     }
 
     @Override

@@ -5,13 +5,14 @@
         android:id="@+id/search"
         android:icon="?attr/iconActionSearch"
         app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         android:title="@string/search_action"/>
     <item
         android:id="@+id/filter_folders"
         android:icon="?attr/iconActionSearchFolder"
-        app:showAsAction="never"
+        app:showAsAction="ifRoom|collapseActionView"
         android:title="@string/filter_folders_action"
-        app:actionViewClass="android.widget.SearchView"/>
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
     <item
         android:id="@+id/check_mail"
         android:alphabeticShortcut="r"

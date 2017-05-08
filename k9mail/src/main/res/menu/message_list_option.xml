@@ -32,6 +32,7 @@
         android:id="@+id/search"
         android:icon="?attr/iconActionSearch"
         app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         android:title="@string/search_action"/>
 
     <!-- MessageList -->
@@ -182,7 +183,7 @@
         android:id="@+id/compose"
         android:alphabeticShortcut="c"
         android:icon="?attr/iconActionCompose"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:title="@string/compose_action"/>
 
     <!-- MessageList -->
