@@ -11,7 +11,6 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.fsck.k9.K9;
@@ -466,8 +465,7 @@ public class Prefs extends K9PreferenceActivity {
         K9.setK9Language(mLanguage.getValue());
 
         K9.setK9Theme(themeNameToId(mTheme.getValue()));
-        Log.w("DEBUGGING",mThemeColor.getColorSummaryName() +" color summary");
-        Log.w("DEBUGGING",mThemeColor.getColorName() +" color name");
+        K9.setK9ColorTheme(mThemeColor.getColorName());
         K9.setUseDarkTheme(mDarkTheme.isChecked());
         K9.setUseFixedMessageViewTheme(mFixedMessageTheme.isChecked());
         K9.setK9MessageViewThemeSetting(themeNameToId(mMessageTheme.getValue()));

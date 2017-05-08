@@ -44,6 +44,8 @@ import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
+import static com.fsck.k9.K9.ColorTheme.BLUE_GREY;
+
 public class K9 extends Application {
     /**
      * Components that are interested in knowing when the K9 instance is
@@ -106,6 +108,7 @@ public class K9 extends Application {
 
     private static String language = "";
     private static Theme theme = Theme.LIGHT;
+    private static ColorTheme colorTheme = ColorTheme.BLUE_GREY;
     private static Theme messageViewTheme = Theme.USE_GLOBAL;
     private static Theme composerTheme = Theme.USE_GLOBAL;
     private static boolean useFixedMessageTheme = true;
@@ -467,6 +470,7 @@ public class K9 extends Application {
 
         editor.putString("language", language);
         editor.putInt("theme", theme.ordinal());
+        editor.putInt("colorTheme", colorTheme.ordinal());
         editor.putBoolean("darkTheme", useDarkTheme);
         editor.putInt("messageViewTheme", messageViewTheme.ordinal());
         editor.putInt("messageComposeTheme", composerTheme.ordinal());
@@ -829,16 +833,7 @@ public class K9 extends Application {
     public enum Theme {
         LIGHT(R.style.Theme_K9_Light, "light"),
         DARK(R.style.Theme_K9_Dark, "dark"),
-        USE_GLOBAL(0, "global"),
-        BLUE(R.style.Theme_K9_Blue, "blue"),
-        BLUE_LIGHT(R.style.Theme_K9_Blue_Light, "blue_light"),
-        RED(R.style.Theme_K9_Red, "red"),
-        DARK_GREY(R.style.Theme_K9_Dark_Grey, "dark_grey"),
-        GREEN(R.style.Theme_K9_Green, "green"),
-        YELLOW(R.style.Theme_K9_Yellow, "yellow"),
-        ORANGE(R.style.Theme_K9_Orange, "orange"),
-        CARDINAL_RED(0, "cardinal_red"),
-        PURPLE(R.style.Theme_K9_Purple, "purple");
+        USE_GLOBAL(0, "global");
 
         final public int value;
         final public String name;
@@ -850,35 +845,37 @@ public class K9 extends Application {
     }
 
     public enum ColorTheme {
-        BLUE_GREY(0,"blue_grey"),
-        RED(R.style.Theme_K9_Red, "red"),
-        BLUE(R.style.Theme_K9_Blue, "blue"),
-        BLUE_LIGHT(R.style.Theme_K9_Blue_Light, "blue_light"),
-        TEAL(0, "teal"),
-        DARK_GREY(R.style.Theme_K9_Dark_Grey, "dark_grey"),
-        GREEN(R.style.Theme_K9_Green, "green"),
-        YELLOW(R.style.Theme_K9_Yellow, "yellow"),
-        ORANGE(R.style.Theme_K9_Orange, "orange"),
-        BROWN(0, "brown"),
-        PINK(0, "pink"),
-        PURPLE(R.style.Theme_K9_Purple, "purple");
+        BLUE_GREY("blue_grey",R.style.Theme_K9_Light, R.style.Theme_K9_Dark),
+        RED("red", R.style.Theme_K9_Red, 0),
+        BLUE("blue", R.style.Theme_K9_Blue, 0),
+        BLUE_LIGHT("blue_light", R.style.Theme_K9_Blue_Light, 0),
+        TEAL("teal", 0, 0),
+        DARK_GREY("dark_grey", R.style.Theme_K9_Dark_Grey, 0),
+        GREEN("green", R.style.Theme_K9_Green, 0),
+        YELLOW("yellow", R.style.Theme_K9_Yellow, 0),
+        ORANGE("orange", R.style.Theme_K9_Orange, 0),
+        BROWN("brown", 0, 0),
+        PINK("pink", 0, 0),
+        PURPLE("purple", R.style.Theme_K9_Purple, 0);
 
-        final public int value;
+        final public int lightThemeId;
+        final public int darkThemeId;
         final public String name;
 
-        ColorTheme(int value, String name) {
-            this.value = value;
+        ColorTheme(String name, int lightThemeId, int darkThemeId) {
             this.name = name;
+            this.lightThemeId = lightThemeId;
+            this.darkThemeId = darkThemeId;
         }
     }
 
     public static int getK9ThemeResourceId(Theme theme) {
-        for (Theme t : Theme.values()) {
-            if (t == theme) {
-                return t.value;
+        for(ColorTheme ct : ColorTheme.values()) {
+            if(ct.name.equals(colorTheme.name)) {
+                return useDarkTheme ? ct.darkThemeId : ct.lightThemeId;
             }
         }
-        return Theme.LIGHT.value;
+        return ColorTheme.BLUE_GREY.lightThemeId;
     }
 
     public static int getK9ThemeResourceId() {
@@ -909,6 +906,17 @@ public class K9 extends Application {
         if (ntheme != Theme.USE_GLOBAL) {
             theme = ntheme;
         }
+    }
+
+    public static void setK9ColorTheme(String nColor) {
+        for (ColorTheme ct : ColorTheme.values()) {
+            if(ct.name.equals(nColor)) {
+                colorTheme = ct;
+                return;
+            }
+        }
+        // Default
+        colorTheme = BLUE_GREY;
     }
 
     public static void setK9MessageViewThemeSetting(Theme nMessageViewTheme) {
