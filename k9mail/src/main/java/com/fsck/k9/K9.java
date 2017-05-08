@@ -44,8 +44,6 @@ import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
-import static com.fsck.k9.K9.ColorTheme.BLUE_GREY;
-
 public class K9 extends Application {
     /**
      * Components that are interested in knowing when the K9 instance is
@@ -875,7 +873,7 @@ public class K9 extends Application {
                 return useDarkTheme ? ct.darkThemeId : ct.lightThemeId;
             }
         }
-        return ColorTheme.BLUE_GREY.lightThemeId;
+        return useDarkTheme ? ColorTheme.BLUE_GREY.darkThemeId : ColorTheme.BLUE_GREY.lightThemeId;
     }
 
     public static int getK9ThemeResourceId() {
@@ -916,7 +914,7 @@ public class K9 extends Application {
             }
         }
         // Default
-        colorTheme = BLUE_GREY;
+        colorTheme = ColorTheme.BLUE_GREY;
     }
 
     public static void setK9MessageViewThemeSetting(Theme nMessageViewTheme) {
