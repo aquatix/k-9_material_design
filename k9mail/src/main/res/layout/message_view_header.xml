@@ -15,7 +15,7 @@
         <!-- Color chip -->
         <View
             android:id="@+id/chip"
-            android:layout_width="8dip"
+            android:layout_width="3dp"
             android:layout_height="match_parent" />
 
         <LinearLayout
@@ -28,14 +28,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:textStyle="bold"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:padding="8dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
                 android:visibility="gone"
-                tools:visibility="visible"
                 tools:text="(no subject)"
+                tools:visibility="visible"
                 />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="?android:attr/listDivider"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,11 +222,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_height="1dip"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="4dip"
-        android:background="@drawable/divider_horizontal_email" />
 
 </com.fsck.k9.view.MessageHeader>

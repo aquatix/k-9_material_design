@@ -46,8 +46,8 @@
         android:focusableInTouchMode="false"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
-        android:paddingBottom="12dp"
-        android:paddingTop="10dp">
+        android:paddingBottom="10dp"
+        android:paddingTop="8dp">
 
         <com.fsck.k9.view.CustomQuickContactBadge
             android:id="@+id/contact_badge"
