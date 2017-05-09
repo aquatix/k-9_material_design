@@ -2,7 +2,7 @@
 
     <translate
         android:duration="@android:integer/config_mediumAnimTime"
-        android:fromXDelta="0"
-        android:toXDelta="-100%p" />
+        android:fromYDelta="0%p" android:toYDelta="100%p" android:fillAfter="true"
+        android:interpolator="@android:anim/linear_interpolator" />
 
 </set>
