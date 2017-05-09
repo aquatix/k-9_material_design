@@ -1,6 +1,6 @@
 <resources>
 
-    <!--These values need to have the same order as the items in com.fsck.k9.K9.Theme-->
+    <!--These values need to have the same order as the items in com.fsck.k9.K9.ColorTheme-->
 
     <string-array name="default_color_choice_values" translatable="false">
         <item>#607D8B</item>

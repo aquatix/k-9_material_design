@@ -844,17 +844,17 @@ public class K9 extends Application {
 
     public enum ColorTheme {
         BLUE_GREY("blue_grey",R.style.Theme_K9_Light, R.style.Theme_K9_Dark),
-        RED("red", R.style.Theme_K9_Red, 0),
-        BLUE("blue", R.style.Theme_K9_Blue, 0),
-        BLUE_LIGHT("blue_light", R.style.Theme_K9_Blue_Light, 0),
-        TEAL("teal", 0, 0),
-        DARK_GREY("dark_grey", R.style.Theme_K9_Dark_Grey, 0),
-        GREEN("green", R.style.Theme_K9_Green, 0),
-        YELLOW("yellow", R.style.Theme_K9_Yellow, 0),
-        ORANGE("orange", R.style.Theme_K9_Orange, 0),
-        BROWN("brown", 0, 0),
-        PINK("pink", 0, 0),
-        PURPLE("purple", R.style.Theme_K9_Purple, 0);
+        RED("red", R.style.Theme_K9_Red, R.style.Theme_K9_Red_Dark),
+        BLUE("blue", R.style.Theme_K9_Blue, R.style.Theme_K9_Blue_Dark),
+        BLUE_LIGHT("blue_light", R.style.Theme_K9_Blue_Light, R.style.Theme_K9_Blue_Light_Dark),
+        TEAL("teal", R.style.Theme_K9_Teal, R.style.Theme_K9_Teal_Dark),
+        DARK_GREY("dark_grey", R.style.Theme_K9_Dark_Grey, R.style.Theme_K9_Dark_Grey_Dark),
+        GREEN("green", R.style.Theme_K9_Green, R.style.Theme_K9_Green_Dark),
+        YELLOW("yellow", R.style.Theme_K9_Yellow, R.style.Theme_K9_Orange_Dark),
+        ORANGE("orange", R.style.Theme_K9_Orange, R.style.Theme_K9_Orange_Dark),
+        BROWN("brown", R.style.Theme_K9_Brown, R.style.Theme_K9_Brown_Dark),
+        PINK("pink", R.style.Theme_K9_Pink, R.style.Theme_K9_Pink_Dark),
+        PURPLE("purple", R.style.Theme_K9_Purple, R.style.Theme_K9_Purple_Dark);
 
         final public int lightThemeId;
         final public int darkThemeId;
