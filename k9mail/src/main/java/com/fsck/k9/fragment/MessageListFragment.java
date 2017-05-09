@@ -1824,7 +1824,7 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
             holder.position = cursor.getPosition();
 
             if (holder.contactBadge != null) {
-                if (counterpartyAddress != null) {
+                if (counterpartyAddress != null ) {
                     Utility.setContactForBadge(holder.contactBadge, counterpartyAddress);
                     /*
                      * At least in Android 2.2 a different background + padding is used when no
@@ -1835,7 +1835,7 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
                     mContactsPictureLoader.loadContactPicture(counterpartyAddress, holder.contactBadge);
                 } else {
                     holder.contactBadge.assignContactUri(null);
-                    holder.contactBadge.setImageResource(R.drawable.ic_contact_picture);
+                    mContactsPictureLoader.loadContactPicture(new Address("?",""), holder.contactBadge);
                 }
             }
 

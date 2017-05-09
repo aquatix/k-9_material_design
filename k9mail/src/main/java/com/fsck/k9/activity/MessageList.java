@@ -235,7 +235,6 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
             return;
         }
 
-        //TODO: make fab optional via settings
         fab = (FloatingActionButton) mViewSwitcher.findViewById(R.id.fab);
         fab.setOnClickListener(new OnClickListener() {
             @Override
