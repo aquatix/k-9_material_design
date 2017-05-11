@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    android:background="?attr/messageViewBackgroundColor">
+    android:background="@android:color/background_light">
 
     <com.fsck.k9.view.NonLockingScrollView
         android:layout_width="fill_parent"
