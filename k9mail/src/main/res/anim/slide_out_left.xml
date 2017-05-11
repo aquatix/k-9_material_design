@@ -1,8 +1,7 @@
-<set xmlns:android="http://schemas.android.com/apk/res/android" >
+<set xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--message list when entering message-->
     <translate
-        android:duration="@android:integer/config_mediumAnimTime"
-        android:fromYDelta="0%p" android:toYDelta="100%p" android:fillAfter="true"
-        android:interpolator="@android:anim/linear_interpolator" />
+        android:duration="0"/>
 
 </set>
