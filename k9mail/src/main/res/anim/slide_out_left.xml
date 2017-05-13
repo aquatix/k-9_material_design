@@ -2,6 +2,9 @@
 
     <!--message list when entering message-->
     <translate
-        android:duration="0"/>
+        android:duration="@android:integer/config_mediumAnimTime"
+        android:fromYDelta="0%p"
+        android:toYDelta="0%p"
+        />
 
 </set>
