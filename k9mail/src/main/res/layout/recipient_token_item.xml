@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="32dp"
-    android:background="?attr/contactTokenBackgroundColor">
+    android:background="@drawable/round_text_background">
 
     <ImageView
         android:layout_width="32dp"
