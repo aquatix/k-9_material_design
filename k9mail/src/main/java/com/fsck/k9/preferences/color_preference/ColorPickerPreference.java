@@ -66,6 +66,9 @@ public class ColorPickerPreference extends Preference {
     }
 
     private void initAttrs(AttributeSet attrs, int defStyle) {
+        setDefaultValue(Color.parseColor(getContext().getResources().getStringArray(R.array
+                .default_color_choice_values)[0]));
+
         TypedArray a = getContext().getTheme().obtainStyledAttributes(
                 attrs, R.styleable.ColorPickerPreference, defStyle, defStyle);
 

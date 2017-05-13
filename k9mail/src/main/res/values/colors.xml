@@ -24,7 +24,7 @@
 
     <color name="colorPrimary_Red">#DB4437</color>
     <color name="colorPrimaryDark_Red">#B93221</color>
-    <color name="colorAccent_Red">#4285F4</color>
+    <color name="colorAccent_Red">#DB4437</color>
 
     <color name="colorPrimary_Dark_Grey">#455A64</color>
     <color name="colorPrimaryDark_Dark_Grey">#374850</color>
@@ -36,7 +36,7 @@
 
     <color name="colorPrimary_Yellow">#FFBB00</color>
     <color name="colorPrimaryDark_Yellow">#F99F00</color>
-    <color name="colorAccent_Yellow">#4182EF</color>
+    <color name="colorAccent_Yellow">#FFBB00</color>
 
     <color name="colorPrimary_Orange">#FF5722</color>
     <color name="colorPrimaryDark_Orange">#CC461B</color>

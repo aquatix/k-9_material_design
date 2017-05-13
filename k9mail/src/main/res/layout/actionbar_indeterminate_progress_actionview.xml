@@ -26,5 +26,6 @@
     <ProgressBar android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_gravity="center"
-        style="?android:attr/indeterminateProgressStyle" />
+        style="?android:attr/indeterminateProgressStyle"
+        android:theme="@style/Theme.K9.Light.Common.Progressbar" />
 </FrameLayout>

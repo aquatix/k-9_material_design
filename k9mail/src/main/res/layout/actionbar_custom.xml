@@ -42,7 +42,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:theme="@style/Theme.K9.Light.Common.Progressbar" />
 
         <TextView
             android:id="@+id/actionbar_unread_count"

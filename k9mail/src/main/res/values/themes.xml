@@ -313,4 +313,8 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
 
+    <style name="Theme.K9.Light.Common.Progressbar">
+        <item name="colorAccent">#FFFFFF</item> <!-- Whatever color you want-->
+    </style>
+
 </resources>
