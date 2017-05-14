@@ -317,4 +317,12 @@
         <item name="colorAccent">#FFFFFF</item> <!-- Whatever color you want-->
     </style>
 
+    <style name="Theme.K9.Light.Base.Star">
+        <item name="android:button">@drawable/material_star</item>
+    </style>
+
+    <style name="Theme.K9.Light.Base.StarLarge">
+        <item name="android:button">@drawable/material_star_large</item>
+    </style>
+
 </resources>
