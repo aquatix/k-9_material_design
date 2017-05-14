@@ -26,16 +26,16 @@ dependencies {
     compile project(':plugins:HoloColorPicker')
     compile project(':plugins:openpgp-api-lib:openpgp-api')
     compile "com.squareup.okio:okio:${okioVersion}"
-    compile 'commons-io:commons-io:2.4'
+    compile 'commons-io:commons-io:2.5'
     compile "com.android.support:support-v4:${androidSupportLibraryVersion}"
     compile "com.android.support:appcompat-v7:${androidSupportLibraryVersion}"
     compile "com.android.support:design:${androidSupportLibraryVersion}"
-    compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.18'
-    compile 'de.cketti.library.changelog:ckchangelog:1.2.1'
-    compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.splitwise:tokenautocomplete:2.0.7'
-    compile 'de.cketti.safecontentresolver:safe-content-resolver-v14:0.9.0'
-    compile 'com.github.amlcurran.showcaseview:library:5.4.1'
+    compile "net.sourceforge.htmlcleaner:htmlcleaner:${htmlcleaner}"
+    compile "de.cketti.library.changelog:ckchangelog:${ckchangelog}"
+    compile "com.github.bumptech.glide:glide:${glide}"
+    compile "com.splitwise:tokenautocomplete:${tokenautocomplete}"
+    compile "de.cketti.safecontentresolver:safe-content-resolver-v14:${safecontentresolver}"
+    compile "com.github.amlcurran.showcaseview:library:${showcaseview}"
 
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 
@@ -59,7 +59,9 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
 
-        generatedDensities = ['mdpi', 'hdpi', 'xhdpi']
+        defaultConfig {
+            vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']
+        }
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
