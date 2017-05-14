@@ -662,7 +662,7 @@ public class K9 extends Application {
         mMeasureAccounts = storage.getBoolean("measureAccounts", true);
         mCountSearchMessages = storage.getBoolean("countSearchMessages", true);
         mHideSpecialAccounts = storage.getBoolean("hideSpecialAccounts", false);
-        mMessageListSenderAboveSubject = storage.getBoolean("messageListSenderAboveSubject", false);
+        mMessageListSenderAboveSubject = storage.getBoolean("messageListSenderAboveSubject", true);
         mMessageListCheckboxes = storage.getBoolean("messageListCheckboxes", false);
         mMessageListStars = storage.getBoolean("messageListStars", true);
         mMessageListPreviewLines = storage.getInt("messageListPreviewLines", 2);
@@ -730,8 +730,8 @@ public class K9 extends Application {
 
         mAttachmentDefaultPath = storage.getString("attachmentdefaultpath",
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
-        sUseBackgroundAsUnreadIndicator = storage.getBoolean("useBackgroundAsUnreadIndicator", true);
-        sThreadedViewEnabled = storage.getBoolean("threadedView", true);
+        sUseBackgroundAsUnreadIndicator = storage.getBoolean("useBackgroundAsUnreadIndicator", false);
+        sThreadedViewEnabled = storage.getBoolean("threadedView", false);
         fontSizes.load(storage);
 
         try {

@@ -132,16 +132,16 @@ public class FontSizes {
      * Create a <code>FontSizes</code> object with default values.
      */
     public FontSizes() {
-        accountName = FONT_DEFAULT;
-        accountDescription = FONT_DEFAULT;
+        accountName = FONT_16SP;
+        accountDescription = SMALL;
 
-        folderName = FONT_DEFAULT;
-        folderStatus = FONT_DEFAULT;
+        folderName = FONT_16SP;
+        folderStatus = SMALL;
 
-        messageListSubject = FONT_DEFAULT;
-        messageListSender = FONT_DEFAULT;
-        messageListDate = FONT_DEFAULT;
-        messageListPreview = FONT_DEFAULT;
+        messageListSubject = SMALL;
+        messageListSender = FONT_16SP;
+        messageListDate = FONT_12SP;
+        messageListPreview = SMALL;
 
         messageViewSender = FONT_DEFAULT;
         messageViewTo = FONT_DEFAULT;
