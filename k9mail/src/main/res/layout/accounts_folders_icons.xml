@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:ellipsize="end"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </LinearLayout>
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:ellipsize="end"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     </LinearLayout>

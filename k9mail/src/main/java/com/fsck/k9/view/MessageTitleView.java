@@ -2,6 +2,7 @@ package com.fsck.k9.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ import android.widget.TextView;
  * It will hide the subject line in {@link MessageHeader} if the subject fits completely into the
  * action bar's title view.
  */
-public class MessageTitleView extends TextView {
+public class MessageTitleView extends AppCompatTextView {
     private static final int MAX_LINES = 2;
     private static final String ELLIPSIS = "\u2026";
 
