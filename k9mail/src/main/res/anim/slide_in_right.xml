@@ -2,12 +2,12 @@
 
     <!--message enter message-->
     <translate
-        android:duration="@android:integer/config_mediumAnimTime"
+        android:duration="400"
         android:fromYDelta="5%p"
     android:toYDelta="0%p"
     />
     <alpha
-        android:duration="@android:integer/config_mediumAnimTime"
+        android:duration="400"
         android:fromAlpha="0.0"
         android:toAlpha="1.0"/>
 
