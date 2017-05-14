@@ -759,13 +759,23 @@ public class K9 extends Application {
         // We used to save the resource ID of the theme. So convert that to the new format if
         // necessary.
 
-        //TODO: Add possibility to set dark or light theme and color seperatly
         for (Theme t : Theme.values()) {
             if (t.ordinal() == themeValue || themeValue == t.value) {
                 K9.setK9Theme(t);
                 break;
             }
         }
+
+        themeValue = storage.getInt("colorTheme", ColorTheme.BLUE_GREY.ordinal());
+
+        for (ColorTheme ct : ColorTheme.values()) {
+            if (ct.ordinal() == themeValue) {
+                K9.setK9ColorTheme(ct.name);
+                break;
+            }
+        }
+
+        useDarkTheme = storage.getBoolean("darkTheme", false);
 
         themeValue = storage.getInt("messageViewTheme", Theme.USE_GLOBAL.ordinal());
         K9.setK9MessageViewThemeSetting(Theme.values()[themeValue]);
