@@ -1,4 +1,4 @@
-# K-9 Mail Material Fork
+# K-9 Mail Material Fork <img src="http://i.imgur.com/rnycM9C.png">
 
 Fork of the K9 mail client offering material design by integrating v7 appcompat library and features theming options.
 
@@ -6,7 +6,7 @@ Fork of the K9 mail client offering material design by integrating v7 appcompat 
 
 ## Download
 
-K-9 Mail Material Fork can be downloaded from here:
+K-9 Mail Material Fork APK can be downloaded from here:
 
 - [Github Releases](https://github.com/G00fY2/k-9_material_design/releases)
 
