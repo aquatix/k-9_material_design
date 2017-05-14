@@ -1455,7 +1455,23 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
 
     @Override
     public void enableActionBarProgress(boolean enable) {
-        mMessageListFragment.setPullToRefreshPending();
+        if (mMenuButtonCheckMail != null && mMenuButtonCheckMail.isVisible()) {
+            mActionBarProgress.setVisibility(ProgressBar.GONE);
+            if (enable) {
+                mMenuButtonCheckMail
+                        .setActionView(mActionButtonIndeterminateProgress);
+            } else {
+                mMenuButtonCheckMail.setActionView(null);
+            }
+        } else {
+            if (mMenuButtonCheckMail != null)
+                mMenuButtonCheckMail.setActionView(null);
+                if (enable) {
+                    mActionBarProgress.setVisibility(ProgressBar.VISIBLE);
+                } else {
+                    mActionBarProgress.setVisibility(ProgressBar.GONE);
+                }
+        }
     }
 
     @Override

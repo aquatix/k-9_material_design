@@ -29,6 +29,14 @@
 
     <!-- MessageList -->
     <item
+        android:id="@+id/check_mail"
+        android:alphabeticShortcut="r"
+        android:icon="?attr/iconActionRefresh"
+        app:showAsAction="always"
+        android:title="@string/check_mail_action"/>
+
+    <!-- MessageList -->
+    <item
         android:id="@+id/search"
         android:icon="?attr/iconActionSearch"
         app:showAsAction="always"
@@ -42,14 +50,6 @@
         app:showAsAction="always"
         android:title="@string/action_remote_search"
         android:visible="false"/>
-
-    <!-- MessageList -->
-    <item
-        android:id="@+id/check_mail"
-        android:alphabeticShortcut="r"
-        android:icon="?attr/iconActionRefresh"
-        app:showAsAction="never"
-        android:title="@string/check_mail_action"/>
 
     <!-- MessageView -->
     <item
@@ -151,7 +151,7 @@
     <item
         android:id="@+id/set_sort"
         android:icon="?attr/iconActionSort"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:title="@string/sort_by">
         <menu>
             <item

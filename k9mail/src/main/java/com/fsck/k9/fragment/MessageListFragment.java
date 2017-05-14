@@ -3520,8 +3520,4 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
     private boolean isPullToRefreshAllowed() {
         return (isRemoteSearchAllowed() || isCheckMailAllowed());
     }
-
-    public void setPullToRefreshPending() {
-        mPullToRefreshView.setRefreshing();
-    }
 }
