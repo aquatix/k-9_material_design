@@ -92,7 +92,7 @@
         <item name="iconActionAddAttachment">@drawable/ic_action_add_attachment_dark</item>
         <item name="iconActionAddCcBcc">@drawable/ic_action_add_cc_bcc_dark</item>
         <item name="iconActionArchive">@drawable/ic_action_archive_dark</item>
-        <item name="iconActionCompose">@drawable/ic_action_compose_dark</item>
+        <item name="iconActionCompose">@drawable/ic_create_white</item>
         <item name="iconActionDelete">@drawable/ic_action_delete_dark</item>
         <item name="iconActionMove">@drawable/ic_action_move_dark</item>
         <item name="iconActionCopy">@drawable/ic_action_copy_dark</item>
