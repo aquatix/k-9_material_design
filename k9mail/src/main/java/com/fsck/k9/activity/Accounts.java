@@ -1,6 +1,7 @@
 
 package com.fsck.k9.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
@@ -15,6 +16,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -81,6 +84,8 @@ import com.fsck.k9.search.SearchAccount;
 import com.fsck.k9.search.SearchSpecification.Attribute;
 import com.fsck.k9.search.SearchSpecification.SearchField;
 import com.fsck.k9.view.ColorChip;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsListener;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -430,6 +435,19 @@ public class Accounts extends K9ListActivity implements OnItemClickListener {
         mNonConfigurationInstance = (NonConfigurationInstance) getLastNonConfigurationInstance();
         if (mNonConfigurationInstance != null) {
             mNonConfigurationInstance.restore(this);
+        }
+
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.M) {
+            Dexter.withActivity(Accounts.this)
+                    .withPermissions(
+                            Manifest.permission.READ_CONTACTS,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    ).withListener(DialogOnAnyDeniedMultiplePermissionsListener.Builder
+                    .withContext(Accounts.this)
+                    .withTitle("Contacts & storage permission")
+                    .withMessage("Both contact and storage permission are needed for K-9 to work properly.")
+                    .withButtonText(android.R.string.ok)
+                    .build()).check();
         }
 
         ChangeLog cl = new ChangeLog(this);

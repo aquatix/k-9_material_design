@@ -36,6 +36,7 @@ dependencies {
     compile "com.splitwise:tokenautocomplete:${tokenautocomplete}"
     compile "de.cketti.safecontentresolver:safe-content-resolver-v14:${safecontentresolver}"
     compile "com.github.amlcurran.showcaseview:library:${showcaseview}"
+    compile "com.karumi:dexter:${dexter}"
 
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 
