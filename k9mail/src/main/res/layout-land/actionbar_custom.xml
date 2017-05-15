@@ -51,8 +51,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:paddingLeft="12dip"
-            android:paddingRight="12dip"
+            android:layout_marginLeft="8dp"
+            android:shadowColor="#7F000000"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="2"
             android:textColor="?actionbarTitleColor"
             android:textSize="24sp" />
     </LinearLayout>

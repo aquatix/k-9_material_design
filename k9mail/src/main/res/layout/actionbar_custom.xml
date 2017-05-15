@@ -47,13 +47,16 @@
 
         <TextView
             android:id="@+id/actionbar_unread_count"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:background="@drawable/circle_background"
+            android:layout_marginLeft="8dp"
+            android:shadowColor="#7F000000"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="2"
             android:textColor="?actionbarTitleColor"
-            android:textSize="16sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
