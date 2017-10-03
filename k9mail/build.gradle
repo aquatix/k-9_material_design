@@ -57,8 +57,8 @@ android {
         applicationId "com.fsck.k9.materialfork"
         testApplicationId "com.fsck.k9.materialfork.tests"
 
-        versionCode 232703
-        versionName '5.207.3'
+        versionCode 232711
+        versionName '5.208.1'
 
         minSdkVersion 15
         targetSdkVersion 25
